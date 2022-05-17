@@ -82,7 +82,7 @@ public class GolemEnemy : EnemyBrain, IPlayerDamageable
                    
                     yield return new WaitForSeconds(_attackPerStopWalk);
                 }             
-                _agent.speed = 6;
+                _agent.speed = _baseMovementSpeed;
             }
         }
         _canAttack = false;

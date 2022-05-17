@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: PrimeiraFala
   m_EditorClassIdentifier: 
   dialogs:
-  - "isto \xE9 um teste"
+  - ...
   - testa este nivel
   - terminamos aqui
   myColor: {r: 1, g: 0, b: 0, a: 1}
-  PositionInScene: 0
-  personUI: {fileID: 2288605200399908147, guid: 80b9d36a8a53e414e98c3722109c1b39, type: 3}

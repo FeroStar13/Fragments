@@ -116,6 +116,7 @@ MonoBehaviour:
   maxDistance: 20
   _coneAngle: 360
   _movementSpeed: 1
+  _baseMovementSpeed: 1
   _hp: 100
   enemyHpImage: {fileID: 6940021914887158346}
   _attackRange: 2

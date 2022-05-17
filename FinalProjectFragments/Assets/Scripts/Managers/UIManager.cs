@@ -12,17 +12,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image staminaImage;
     [SerializeField] private Image hpImage;
 
-    [SerializeField] private TextMeshProUGUI textDialog;
-    [SerializeField] private float typingSpeed;
-    [SerializeField] private GameObject choiceCanvas;
-    private float activeTypingSpeed;
-    private Coroutine displayLineCoroutine;
-    private bool canContinueToNextLine;
-
-    public Coroutine DisplayLineCoroutine { get => displayLineCoroutine; set => displayLineCoroutine = value; }
-    public float ActiveTypingSpeed { get => activeTypingSpeed; set => activeTypingSpeed = value; }
-    public float TypingSpeed { get => typingSpeed; }
-    public bool CanContinueToNextLine { get => canContinueToNextLine; set => canContinueToNextLine = value; }
+    [SerializeField] private Text npcDialog;
 
 
     private void Awake()
@@ -50,43 +40,8 @@ public class UIManager : MonoBehaviour
 
     public void DialogOnScrene(string dialogToDisplay, Color intendedColor)
     {
-
-        //textDialog.text = dialogToDisplay;
-        if (DisplayLineCoroutine != null)
-        {
-            StopCoroutine(DisplayLineCoroutine);
-        }
-        DisplayLineCoroutine = StartCoroutine("DisplayLine", dialogToDisplay);
-        textDialog.color = intendedColor;
-    }
-
-    private IEnumerator DisplayLine(string stringToDisplay)
-    {
-        string str = "<>";
-        textDialog.text = "";
-        canContinueToNextLine = false;
-        foreach (char letter in stringToDisplay)
-        {
-            if (letter == str[0])
-            {
-                activeTypingSpeed = 0;
-            }
-            if (letter == str[1])
-            {
-                activeTypingSpeed = typingSpeed;
-            }
-
-            textDialog.text += letter;
-
-
-            yield return new WaitForSeconds(ActiveTypingSpeed);
-
-
-        }
-        canContinueToNextLine = true;
-    }
-    public void ActivateChoiceUi()
-    {
-        choiceCanvas.SetActive(true);
+        npcDialog.text = dialogToDisplay;
+        npcDialog.color = intendedColor;
+       
     }
 }

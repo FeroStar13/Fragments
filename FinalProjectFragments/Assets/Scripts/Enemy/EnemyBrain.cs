@@ -9,6 +9,7 @@ public class EnemyBrain : MonoBehaviour
 	[SerializeField] protected float maxDistance;
 	[SerializeField] float _coneAngle;
 	[SerializeField] protected float _movementSpeed;
+	[SerializeField] protected float _baseMovementSpeed;
 	
 
 	[Header("Life")]

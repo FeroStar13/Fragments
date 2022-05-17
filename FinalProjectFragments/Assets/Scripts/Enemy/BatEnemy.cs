@@ -83,7 +83,7 @@ public class BatEnemy : EnemyBrain, IPlayerDamageable
                 {
                     CreateBullet();
                     yield return new WaitForSeconds(1);
-                    _agent.speed = 6;
+                    _agent.speed = _baseMovementSpeed;
                 }
             }
             _canAttack = false;
