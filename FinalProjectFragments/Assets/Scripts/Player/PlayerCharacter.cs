@@ -33,12 +33,20 @@ public class PlayerCharacter : MonoBehaviour, IDamageable
     [SerializeField] float _meleeAttackRate;
     [SerializeField] int _meleeAttackRange;
 
+    [Header("EspecialWeapons")]
+    [SerializeField] EspecialWeapons myDirection;
+
     [SerializeField] float _currentTime;
 
+    enum EspecialWeapons
+    {
+       ExplosiveBox,
+       EnergyCanon
+    }
 
-    CharacterController controller;
+    // CharacterController controller;
     Animator animator;
-   // Rigidbody _rigidBody;
+    Rigidbody _rigidBody;
 
     public float PlayerStamina 
     { 
@@ -87,8 +95,8 @@ public class PlayerCharacter : MonoBehaviour, IDamageable
 
     private void Awake()
     {
-       // _rigidBody = GetComponent<Rigidbody>();
-        controller = GetComponent<CharacterController>();
+        _rigidBody = GetComponent<Rigidbody>();
+       // controller = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
       
     }
@@ -99,8 +107,7 @@ public class PlayerCharacter : MonoBehaviour, IDamageable
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0, vertical).normalized;
 
-
-       // _rigidBody.velocity = direction * _movementSpeed * Time.deltaTime;
+ 
 
 
         if (direction.magnitude >= 0.1f)
@@ -109,19 +116,20 @@ public class PlayerCharacter : MonoBehaviour, IDamageable
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, _turnSmoothTime);
             transform.rotation = Quaternion.Euler(0, angle, 0); //smooth rotation
 
-             controller.Move(direction * _movementSpeed * Time.deltaTime);// movimentação
-
-           
-
+            // controller.Move(direction * _movementSpeed * Time.deltaTime);// movimentação
 
         }
+       Vector3 finalVelocity = (direction.x * transform.right + direction.z * transform.forward) * _movementSpeed;
+
+        finalVelocity.y = _rigidBody.velocity.y;
+        _rigidBody.velocity = finalVelocity;
 
     }
     void Running()
     {
         if (Input.GetKey(KeyCode.LeftShift) && PlayerStamina > _playerStaminaThreshold)
         {
-            if (controller.velocity.magnitude != 0)
+            if (_rigidBody.velocity.magnitude != 0)
             {
                 _movementSpeed = _runningSpeed;
                 _playerStamina -= Time.deltaTime * _playerStaminaLostMultiplier; //perca de stamina

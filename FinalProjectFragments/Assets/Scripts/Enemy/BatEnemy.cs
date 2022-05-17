@@ -10,6 +10,9 @@ public class BatEnemy : EnemyBrain, IPlayerDamageable
     [Header("Attack")]
     [SerializeField] bool _canAttack;
     [SerializeField] float _attackRange;
+    [SerializeField] float _fireAgainTimer;
+    [SerializeField] float _fireCooldown;
+    [SerializeField] GameObject bulletPrefab;
 
     private void Awake()
     {
@@ -18,8 +21,11 @@ public class BatEnemy : EnemyBrain, IPlayerDamageable
         _agent.speed = _movementSpeed;
     }
 
+    
          protected override void Update()
     {
+        _fireAgainTimer += Time.deltaTime;
+
         EnemyDamage();
         base.Update();
         Move();
@@ -56,6 +62,12 @@ public class BatEnemy : EnemyBrain, IPlayerDamageable
 
     void EnemyDamage()
     {
+        StartCoroutine(Attack());
+
+    }
+
+    IEnumerator Attack()
+    {
         if (_canAttack == false)
         {
             RaycastHit hit;
@@ -69,14 +81,26 @@ public class BatEnemy : EnemyBrain, IPlayerDamageable
                 IDamageable characterHit = hit.transform.GetComponent<IDamageable>();
                 if (characterHit != null)
                 {
-
+                    CreateBullet();
+                    yield return new WaitForSeconds(1);
                     _agent.speed = 6;
                 }
             }
             _canAttack = false;
         }
-
     }
+    void CreateBullet()
+    {
+        if (_fireAgainTimer >= _fireCooldown && _canAttack == true)
+        {
+            GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.localRotation);
+            EnemyFire fire = bullet.GetComponent<EnemyFire>();
+            fire.FireMove(target.position - bullet.transform.position);
+            Destroy(bullet, 4f);
+            _fireAgainTimer = 0;
+            _canAttack = false;
+        }
     }
+}
 
 

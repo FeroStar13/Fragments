@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NPCDialog : MonoBehaviour, IInteractable
 {
-    [SerializeField] List<ScriptableDialog> dialogList = new List<ScriptableDialog >();
+    [SerializeField] List<ScriptableDialog> dialogList = new List<ScriptableDialog>();
     int position;
     int char1PosInDialog;
     string canvasActive;
@@ -71,9 +71,9 @@ public class NPCDialog : MonoBehaviour, IInteractable
 
     public void Interact(PlayerCharacter playerThatInteract)
     {
-        
-            DialogueRun();
-            Debug.Log("interect");
+        Debug.Log("interect");
+        DialogueRun();
+          
         
     }
 }
