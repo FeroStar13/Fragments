@@ -8,8 +8,7 @@ public class PlayerCharacter : MonoBehaviour, IDamageable
     [SerializeField] float _runningSpeed;
     [SerializeField] float _baseSpeed;
     [SerializeField] float _movementSpeed;
-    float _turnSmoothVelocity;
-    [SerializeField] float _turnSmoothTime;
+    [SerializeField] float _rotationMultiplier;
 
     [Header("Stamina")]
     [SerializeField] float _playerStamina = 100f; 
@@ -27,6 +26,12 @@ public class PlayerCharacter : MonoBehaviour, IDamageable
     [SerializeField] float _fireRate;
     [SerializeField] bool _canFire = true;
 
+    [Header("Rool")]
+    [SerializeField] float _distanceToRoll;
+    [SerializeField] float _timeToRoll;
+    [SerializeField] float _timeToRollAgain;
+    [SerializeField] float _staminaLostOnRoll;
+
     [Header("MeleeDamage")]
     [SerializeField] float _meleeDamage;
     [SerializeField] bool _canAttack = true;
@@ -34,17 +39,22 @@ public class PlayerCharacter : MonoBehaviour, IDamageable
     [SerializeField] int _meleeAttackRange;
 
     [Header("EspecialWeapons")]
-    [SerializeField] EspecialWeapons myDirection;
+    [SerializeField] SpecialWeapons myWeapon;
+    [SerializeField] GameObject ExplosiveBoxPrefab;
+    [SerializeField] SuperFireCannon _SuperFirePrefab;
+
+
 
     [SerializeField] float _currentTime;
 
-    enum EspecialWeapons
+    enum SpecialWeapons
     {
        ExplosiveBox,
        EnergyCanon
     }
 
     // CharacterController controller;
+    Animator animatorInChild;
     Animator animator;
     Rigidbody _rigidBody;
 
@@ -77,14 +87,23 @@ public class PlayerCharacter : MonoBehaviour, IDamageable
         {
             MeleeAttack();
         }
-       
 
+  
      
         if (_currentTime >= _fireRate)
         {
             Fire();
         }
         InteractCast();
+        ChangeWeapon();
+        ActivateEspecialWeapons();
+
+        _timeToRoll += Time.deltaTime;
+        if (_timeToRoll >= _timeToRollAgain)
+        {
+            Rolling();
+        }
+
     }
 
     private void FixedUpdate()
@@ -97,7 +116,8 @@ public class PlayerCharacter : MonoBehaviour, IDamageable
     {
         _rigidBody = GetComponent<Rigidbody>();
        // controller = GetComponent<CharacterController>();
-        animator = GetComponentInChildren<Animator>();
+        animatorInChild = GetComponentInChildren<Animator>();
+        animator = GetComponent<Animator>();
       
     }
 
@@ -107,10 +127,21 @@ public class PlayerCharacter : MonoBehaviour, IDamageable
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0, vertical).normalized;
 
- 
+        float targetAngle = Vector3.Angle(transform.forward, direction);
+        float cross = Vector3.Cross(transform.forward, direction).y;
+
+        if(cross < 0)
+        {
+            targetAngle *= -1;
+        }
+
+        transform.Rotate(Vector3.up * targetAngle * Time.deltaTime * _rotationMultiplier);
+
+        _rigidBody.velocity = direction * _movementSpeed;
 
 
-        if (direction.magnitude >= 0.1f)
+
+      /*  if (direction.magnitude >= 0.1f)
         {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, _turnSmoothTime);
@@ -122,7 +153,7 @@ public class PlayerCharacter : MonoBehaviour, IDamageable
        Vector3 finalVelocity = (direction.x * transform.right + direction.z * transform.forward) * _movementSpeed;
 
         finalVelocity.y = _rigidBody.velocity.y;
-        _rigidBody.velocity = finalVelocity;
+        _rigidBody.velocity = finalVelocity;*/
 
     }
     void Running()
@@ -199,7 +230,8 @@ public class PlayerCharacter : MonoBehaviour, IDamageable
 
         if (Input.GetKeyDown(KeyCode.Mouse1) && _canAttack == true)
         {
-          
+
+            
             StartCoroutine(TimeThatStopFire());
 
 
@@ -233,10 +265,9 @@ public class PlayerCharacter : MonoBehaviour, IDamageable
         {
             
             _canFire = false;
-            animator.SetTrigger("Attack");
+            animatorInChild.SetTrigger("Attack");
             yield return new WaitForSeconds(_meleeAttackRate);
             _canFire = true;
-            _movementSpeed = _baseSpeed;
         }
     }
 
@@ -254,8 +285,16 @@ public class PlayerCharacter : MonoBehaviour, IDamageable
 
     void Rolling()
     {
-      //  controller.AddForce(direction * _fireSpeed, ForceMode.Impulse);
+        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+
+            _rigidBody.AddForce(transform.forward * _distanceToRoll, ForceMode.Impulse);
+            _playerStamina -= _staminaLostOnRoll;
+            _timeToRoll = 0;
+        }
     }
+
     private void InteractCast()
     {
         if (Input.GetKeyDown(KeyCode.E))
@@ -274,10 +313,60 @@ public class PlayerCharacter : MonoBehaviour, IDamageable
                     interacted.Interact(this);
 
                 }
-
+            }
+        }    
+    }
+    void ChangeWeapon()
+    {
+        if(Input.GetKeyDown(KeyCode.RightArrow))
+       
+        {
+            myWeapon++;
+            if ((int)myWeapon < 0)
+            {
+                myWeapon = SpecialWeapons.ExplosiveBox;
             }
         }
-     
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+
+        {
+            myWeapon--;
+            if ((int)myWeapon > 1)
+            {
+                myWeapon = SpecialWeapons.EnergyCanon;
+            }
+        }
+    }
+
+    void ActivateEspecialWeapons()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            switch (myWeapon)
+            {
+                case SpecialWeapons.ExplosiveBox:
+                    SpawnExplosiveBox();
+                    break;
+
+                case SpecialWeapons.EnergyCanon:
+                    ActivateSpecialCannon();
+                    break;
+            }
+        }        
+    }
+
+    void SpawnExplosiveBox()
+    {          
+            GameObject boxToSpawn = Instantiate(ExplosiveBoxPrefab, transform.position, transform.localRotation);
+            ExplosiveBox box = boxToSpawn.GetComponent<ExplosiveBox>();        
+    }
+
+    void ActivateSpecialCannon()
+    {
+        SuperFireCannon newBullet = Instantiate(_SuperFirePrefab, transform.position, transform.rotation);
+        SuperFireCannon fire = newBullet.GetComponent<SuperFireCannon>();
+        fire.FireMove(transform.forward);
     }
 }
    

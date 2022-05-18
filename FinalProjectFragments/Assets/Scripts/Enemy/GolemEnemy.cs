@@ -38,8 +38,9 @@ public class GolemEnemy : EnemyBrain, IPlayerDamageable
 
     public void TakeDamage(float DamageToTake)
     {
-        Die();
+      
         _hp = _hp - DamageToTake;
+        Die();
         UpdateEnemyHP(_hp);
     }
     void Move()

@@ -2,16 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerFire: MonoBehaviour
+public class SuperFireCannon : MonoBehaviour
 {
+ 
     Rigidbody _rigidbody;
     [SerializeField] float _fireSpeed;
     [SerializeField] float _fireRange;
-
     [SerializeField] float _damage;
-
-    [SerializeField] Vector3 Offset;
-
 
     private void Awake()
     {
@@ -27,19 +24,21 @@ public class PlayerFire: MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        
         IPlayerDamageable damage = other.transform.GetComponent<IPlayerDamageable>();
 
         if (damage == null)
         {
-            
+
         }
         else
         {
-            
+
             damage.TakeDamage(_damage);
-            Destroy(gameObject);
+           
         }
-       
+
     }
 
 }
+

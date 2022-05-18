@@ -22,27 +22,25 @@ public class ExplosiveBox : MonoBehaviour
 
     IEnumerator ExplosionTimer()
     {
+        yield return new WaitForSeconds(_timeToExplode);
+
         Collider[] hitColliders = new Collider[100];
 
         hitColliders = Physics.OverlapSphere(transform.position, _explosionRange);
 
+
         for (var i = 0; i < hitColliders.Length; i++)
         {
             Transform tempTarget = hitColliders[i].transform;
-
-           
-
             IPlayerDamageable interacted = tempTarget.GetComponent<IPlayerDamageable>();
 
             if (interacted == null)
             {
             }
             else
-            {
-                yield return new WaitForSeconds(_timeToExplode);              
+            {                         
                 interacted.TakeDamage(_damage);
-                Destroy(gameObject);
-                Debug.Log("boom");
+                Debug.Log("boom");           
             }
 
             IDamageable interacted2 = tempTarget.GetComponent<IDamageable>();
@@ -52,14 +50,13 @@ public class ExplosiveBox : MonoBehaviour
             }
             else
             {
-
-                yield return new WaitForSeconds(_timeToExplode);             
                 interacted2.TakeDamage(_damage);
-                Destroy(gameObject);
-                Debug.Log("boom2");
+                Debug.Log("boom");
             }
-        }
 
-       
+
+        }
+        Destroy(gameObject);
+
     }
 }
