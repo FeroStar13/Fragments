@@ -30,7 +30,8 @@ public class GolemEnemy : EnemyBrain, IPlayerDamageable
     }
     public void Die()
     {
-        if(_hp <= 1)
+        GameManager.instance.GolemDied(this);
+        if (_hp <= 1)
         {
             Destroy(gameObject);
         }
@@ -61,6 +62,7 @@ public class GolemEnemy : EnemyBrain, IPlayerDamageable
             StartCoroutine(AttackPerSecond());
 
         }
+       
     }
     IEnumerator AttackPerSecond()
     {

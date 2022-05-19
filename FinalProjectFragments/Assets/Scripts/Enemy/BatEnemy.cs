@@ -35,7 +35,7 @@ public class BatEnemy : EnemyBrain, IPlayerDamageable
         if (target != null)
         {
 
-            Vector3 position = new Vector3(target.position.x, transform.position.y, target.position.z);
+            Vector3 position = new Vector3(target.position.x, transform.position.y + 7, target.position.z);
             transform.LookAt(position);
             _agent.SetDestination(position);
         }
@@ -51,6 +51,7 @@ public class BatEnemy : EnemyBrain, IPlayerDamageable
 
     public void Die()
     {
+        GameManager.instance.BatDied(this);
         if (_hp <= 1)
         {
             Destroy(gameObject);

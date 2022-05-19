@@ -14,6 +14,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Text npcDialog;
 
+    [SerializeField] GameObject Inventory;
+    [SerializeField] bool _inventoryIsOpen = false;
 
     private void Awake()
     {
@@ -29,6 +31,11 @@ public class UIManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
+
+    private void Update()
+    {
+        OpenInventory();
+    }
     public void UpdateStamina(float staminaDoPlayer)
     {
         staminaImage.fillAmount = staminaDoPlayer / 100.0f;
@@ -42,6 +49,17 @@ public class UIManager : MonoBehaviour
     {
         npcDialog.text = dialogToDisplay;
         npcDialog.color = intendedColor;
-       
+
+    }
+
+    void OpenInventory()
+    {
+      
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            _inventoryIsOpen = true;
+            Inventory.SetActive(_inventoryIsOpen);
+        }
     }
 }

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] Transform[] spawnPoints;
+    [SerializeField] Transform[] golemSpawnPoints;
+    [SerializeField] Transform[] batSpawnPoints;
 
     List<GolemEnemy> GolemAlive = new List<GolemEnemy>();
     List<BatEnemy> BatAlive = new List<BatEnemy>();
@@ -27,16 +28,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    
+
     private void Start()
     {
         GolemSpawn();
         BatSpawn();
+     
     }
     void GolemSpawn()
     {
         for (int i = 0; i < 1; i++)
         {
-            foreach (var spawn in spawnPoints)
+            foreach (var spawn in golemSpawnPoints)
             {
                 GolemEnemy newGolem = Instantiate(_golemPrefab, spawn.position, spawn.rotation);
                 GolemAlive.Add(newGolem);
@@ -58,7 +62,7 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < 1; i++)
         {
-            foreach (var spawn in spawnPoints)
+            foreach (var spawn in batSpawnPoints)
             {
                 BatEnemy newBat = Instantiate(_batPrefab, spawn.position, spawn.rotation);
                 BatAlive.Add(newBat);
