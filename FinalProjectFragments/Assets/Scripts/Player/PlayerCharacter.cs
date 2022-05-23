@@ -41,8 +41,10 @@ public class PlayerCharacter : MonoBehaviour, IDamageable
     [Header("EspecialWeapons")]
     [SerializeField] SpecialWeapons myWeapon;
     [SerializeField] GameObject ExplosiveBoxPrefab;
-    [SerializeField] SuperFireCannon _SuperFirePrefab;
+    [SerializeField] float _ammountOfExplosiveBoxes;
 
+    [SerializeField] SuperFireCannon _SuperFirePrefab;
+    [SerializeField] float _ammountOfEnergyCannons;
 
 
     [SerializeField] float _currentTime;
@@ -139,22 +141,6 @@ public class PlayerCharacter : MonoBehaviour, IDamageable
 
         _rigidBody.velocity = direction * _movementSpeed;
 
-
-
-      /*  if (direction.magnitude >= 0.1f)
-        {
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, _turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0, angle, 0); //smooth rotation
-
-            // controller.Move(direction * _movementSpeed * Time.deltaTime);// movimentação
-
-        }
-       Vector3 finalVelocity = (direction.x * transform.right + direction.z * transform.forward) * _movementSpeed;
-
-        finalVelocity.y = _rigidBody.velocity.y;
-        _rigidBody.velocity = finalVelocity;*/
-
     }
     void Running()
     {
@@ -214,6 +200,8 @@ public class PlayerCharacter : MonoBehaviour, IDamageable
                 //Reduzir a quantidade de desparos
 
                 PlayerFireCharge--;
+                UIManager.instance.UpdateCharge(_playerFireCharge);
+              
 
             }
         }
@@ -332,10 +320,19 @@ public class PlayerCharacter : MonoBehaviour, IDamageable
 
         {
             myWeapon--;
-            if ((int)myWeapon > 1)
+            if ((int)myWeapon > 0)
             {
                 myWeapon = SpecialWeapons.EnergyCanon;
             }
+        }
+
+        if (myWeapon == SpecialWeapons.ExplosiveBox)
+        {
+            UIManager.instance.isExplosiveBox();
+        }
+        if (myWeapon == SpecialWeapons.EnergyCanon)
+        {
+            UIManager.instance.isSuperCannon();
         }
     }
 
@@ -346,10 +343,12 @@ public class PlayerCharacter : MonoBehaviour, IDamageable
             switch (myWeapon)
             {
                 case SpecialWeapons.ExplosiveBox:
+             
                     SpawnExplosiveBox();
                     break;
 
                 case SpecialWeapons.EnergyCanon:
+                   
                     ActivateSpecialCannon();
                     break;
             }
@@ -357,16 +356,25 @@ public class PlayerCharacter : MonoBehaviour, IDamageable
     }
 
     void SpawnExplosiveBox()
-    {          
+    {        
+        if(_ammountOfExplosiveBoxes > 0)
+        {
             GameObject boxToSpawn = Instantiate(ExplosiveBoxPrefab, transform.position, transform.localRotation);
-            ExplosiveBox box = boxToSpawn.GetComponent<ExplosiveBox>();        
+            ExplosiveBox box = boxToSpawn.GetComponent<ExplosiveBox>();
+            _ammountOfExplosiveBoxes--;
+        }
+                
     }
 
     void ActivateSpecialCannon()
     {
-        SuperFireCannon newBullet = Instantiate(_SuperFirePrefab, transform.position, transform.rotation);
-        SuperFireCannon fire = newBullet.GetComponent<SuperFireCannon>();
-        fire.FireMove(transform.forward);
+        if (_ammountOfEnergyCannons > 0)
+        {
+            SuperFireCannon newBullet = Instantiate(_SuperFirePrefab, transform.position, transform.rotation);
+            SuperFireCannon fire = newBullet.GetComponent<SuperFireCannon>();
+            fire.FireMove(transform.forward);
+            _ammountOfEnergyCannons--;
+        }
     }
 }
    

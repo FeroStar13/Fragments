@@ -10,4 +10,5 @@ public class Item : ScriptableObject
     [SerializeField] int ammount;
 
     public Sprite Icon1 { get => Icon; set => Icon = value; }
+    public int Ammount { get => ammount; set => ammount = value; }
 }

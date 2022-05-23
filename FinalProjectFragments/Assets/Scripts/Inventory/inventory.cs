@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class inventory : MonoBehaviour
 {
-    [SerializeField] List<Item> items;
+    [SerializeField] protected List<Item> items;
     [SerializeField] Transform itemsParant;
     [SerializeField] ItemSlot[] itemSlots;
 
     private void OnValidate()
     {
-        if(itemsParant != null)
+        if (itemsParant != null)
         {
             itemSlots = itemsParant.GetComponentsInChildren<ItemSlot>();
         }
-       // RefreshUI();
+        RefreshUI();
     }
 
     void RefreshUI()
@@ -31,7 +31,7 @@ public class inventory : MonoBehaviour
             itemSlots[i].Item = null;
         }
     }
-    
+
     public bool AddItem(Item item)
     {
         if (IsFull())
