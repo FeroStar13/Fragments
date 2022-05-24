@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class ItemSlot : MonoBehaviour
 {
-    
-   [SerializeField] private Image image;
 
-  private Item _item;
+    [SerializeField] private Image image;
+
+    [SerializeField] Item _item;
 
     public Item Item
     {

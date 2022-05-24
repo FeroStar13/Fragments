@@ -6,7 +6,7 @@ public class inventory : MonoBehaviour
 {
     [SerializeField] protected List<Item> items;
     [SerializeField] Transform itemsParant;
-    [SerializeField] ItemSlot[] itemSlots;
+    [SerializeField] protected ItemSlot[] itemSlots;
 
     private void OnValidate()
     {
@@ -51,8 +51,21 @@ public class inventory : MonoBehaviour
         }
         return false;
     }
+
     public bool IsFull()
     {
         return items.Count >= itemSlots.Length;
+    }
+
+    public bool Contains(Item item)
+    {
+        for (int i = 0; i < items.Count; i++)
+        {
+            if(item == items[i])
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

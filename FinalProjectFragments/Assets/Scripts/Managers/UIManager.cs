@@ -41,7 +41,7 @@ public class UIManager : MonoBehaviour
             instance = this;
 
         }
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = false;
     }
 
@@ -107,7 +107,7 @@ public class UIManager : MonoBehaviour
         {
             _inventoryIsOpen = false;
             Inventory.SetActive(_inventoryIsOpen);
-            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.lockState = CursorLockMode.Confined  ;
             Cursor.visible = false;
             return;
         }

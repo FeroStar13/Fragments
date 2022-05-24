@@ -14,7 +14,10 @@ public class GolemEnemy : EnemyBrain, IPlayerDamageable
     [SerializeField] float _timeToHit; //quantidade de vezes que o inimigo ataca enquanto esta parado
     [SerializeField] float _attackPerStopWalk; //quantidade de tempo que dura o ataque
 
- NavMeshAgent _agent;
+    [Header("DropItem")]
+    [SerializeField] GameObject CrystalDropPrefab;
+
+    NavMeshAgent _agent;
 
     private void Awake()
     {
@@ -33,6 +36,9 @@ public class GolemEnemy : EnemyBrain, IPlayerDamageable
         GameManager.instance.GolemDied(this);
         if (_hp <= 1)
         {
+           
+            //GameObject drop = Instantiate(CrystalDropPrefab, transform.position, transform.rotation);
+            
             Destroy(gameObject);
         }
     }
@@ -71,13 +77,13 @@ public class GolemEnemy : EnemyBrain, IPlayerDamageable
         {
             _canAttack = true;
           
-                _agent.speed = 0;
+                
              
 
             IDamageable characterHit = hit.transform.GetComponent<IDamageable>();
             if (characterHit != null)
             {
-               
+                _agent.speed = 0;
                 for (int i = 0; i < _timeToHit; i++)
                 {
                     

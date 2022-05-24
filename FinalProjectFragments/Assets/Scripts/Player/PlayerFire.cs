@@ -27,6 +27,7 @@ public class PlayerFire: MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        
         IPlayerDamageable damage = other.transform.GetComponent<IPlayerDamageable>();
 
         if (damage == null)
@@ -39,7 +40,9 @@ public class PlayerFire: MonoBehaviour
             damage.TakeDamage(_damage);
             Destroy(gameObject);
         }
-       
+        Destroy(gameObject);
     }
+
+   
 
 }

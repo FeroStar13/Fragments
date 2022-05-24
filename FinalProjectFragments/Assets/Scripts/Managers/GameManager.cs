@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
         if (GolemAlive.Count <= 0)
         {
 
-            GolemSpawn();
+           //    GolemSpawn();
         }
     }
 
@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
         if (BatAlive.Count <= 0)
         {
 
-            BatSpawn();
+           // BatSpawn();
         }
 
     }

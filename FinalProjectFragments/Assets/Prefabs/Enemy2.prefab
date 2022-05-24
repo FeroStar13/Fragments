@@ -213,11 +213,11 @@ MonoBehaviour:
   maxDistance: 20
   _coneAngle: 360
   _movementSpeed: 3
-  _baseMovementSpeed: 2
+  _baseMovementSpeed: 3
   _hp: 30
   enemyHpImage: {fileID: 7331670522053391412}
   _canAttack: 0
-  _attackRange: 3
+  _attackRange: 6
   _fireAgainTimer: 0
   _fireCooldown: 2
   bulletPrefab: {fileID: 8313029671257686524, guid: dfdaf7e1043c2224eac2a1a746699356, type: 3}

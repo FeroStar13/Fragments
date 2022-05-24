@@ -9,6 +9,7 @@ public class PlayerCharacter : MonoBehaviour, IDamageable
     [SerializeField] float _baseSpeed;
     [SerializeField] float _movementSpeed;
     [SerializeField] float _rotationMultiplier;
+    [SerializeField] float _playerRotation;
 
     [Header("Stamina")]
     [SerializeField] float _playerStamina = 100f; 
@@ -42,9 +43,11 @@ public class PlayerCharacter : MonoBehaviour, IDamageable
     [SerializeField] SpecialWeapons myWeapon;
     [SerializeField] GameObject ExplosiveBoxPrefab;
     [SerializeField] float _ammountOfExplosiveBoxes;
+    [SerializeField] Item _boomBoxItem;
 
     [SerializeField] SuperFireCannon _SuperFirePrefab;
     [SerializeField] float _ammountOfEnergyCannons;
+    [SerializeField] Item _energyCannonItem;
 
 
     [SerializeField] float _currentTime;
@@ -55,10 +58,10 @@ public class PlayerCharacter : MonoBehaviour, IDamageable
        EnergyCanon
     }
 
-    // CharacterController controller;
     Animator animatorInChild;
     Animator animator;
     Rigidbody _rigidBody;
+    [SerializeField] inventory _inv;
 
     public float PlayerStamina 
     { 
@@ -79,6 +82,9 @@ public class PlayerCharacter : MonoBehaviour, IDamageable
             _playerFireCharge = Mathf.Clamp(_playerFireCharge, 0, 100);
         }
         }
+
+    public float AmmountOfExplosiveBoxes { get => _ammountOfExplosiveBoxes; set => _ammountOfExplosiveBoxes = value; }
+    public float AmmountOfEnergyCannons { get => _ammountOfEnergyCannons; set => _ammountOfEnergyCannons = value; }
 
     private void Update()
     {
@@ -125,11 +131,13 @@ public class PlayerCharacter : MonoBehaviour, IDamageable
 
     private void MoveInDirection()
     {
+        FaceDirection();
+
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0, vertical).normalized;
 
-        float targetAngle = Vector3.Angle(transform.forward, direction);
+      /*  float targetAngle = Vector3.Angle(transform.forward, direction);
         float cross = Vector3.Cross(transform.forward, direction).y;
 
         if(cross < 0)
@@ -137,11 +145,26 @@ public class PlayerCharacter : MonoBehaviour, IDamageable
             targetAngle *= -1;
         }
 
-        transform.Rotate(Vector3.up * targetAngle * Time.deltaTime * _rotationMultiplier);
+        transform.Rotate(Vector3.up * targetAngle * Time.deltaTime * _rotationMultiplier);*/
 
         _rigidBody.velocity = direction * _movementSpeed;
 
     }
+
+    private void FaceDirection()
+    {
+        Plane playerPlane = new Plane(Vector3.up, transform.position);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        float hitdist;
+
+        if(playerPlane.Raycast(ray, out hitdist))
+        {
+            Vector3 targetpoint = ray.GetPoint(hitdist);
+            Quaternion targetrotation = Quaternion.LookRotation(targetpoint - transform.position);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetrotation, _playerRotation * Time.deltaTime);
+        }
+    }
+
     void Running()
     {
         if (Input.GetKey(KeyCode.LeftShift) && PlayerStamina > _playerStaminaThreshold)
@@ -357,23 +380,25 @@ public class PlayerCharacter : MonoBehaviour, IDamageable
 
     void SpawnExplosiveBox()
     {        
-        if(_ammountOfExplosiveBoxes > 0)
+        if(AmmountOfExplosiveBoxes > 0)
         {
             GameObject boxToSpawn = Instantiate(ExplosiveBoxPrefab, transform.position, transform.localRotation);
             ExplosiveBox box = boxToSpawn.GetComponent<ExplosiveBox>();
-            _ammountOfExplosiveBoxes--;
+            AmmountOfExplosiveBoxes--;
+            _inv.RemoveItem(_boomBoxItem);
         }
                 
     }
 
     void ActivateSpecialCannon()
     {
-        if (_ammountOfEnergyCannons > 0)
+        if (AmmountOfEnergyCannons > 0)
         {
             SuperFireCannon newBullet = Instantiate(_SuperFirePrefab, transform.position, transform.rotation);
             SuperFireCannon fire = newBullet.GetComponent<SuperFireCannon>();
             fire.FireMove(transform.forward);
-            _ammountOfEnergyCannons--;
+            AmmountOfEnergyCannons--;
+            _inv.RemoveItem(_energyCannonItem);
         }
     }
 }

@@ -26,16 +26,17 @@ public class BatEnemy : EnemyBrain, IPlayerDamageable
     {
         _fireAgainTimer += Time.deltaTime;
 
-        EnemyDamage();
+        
         base.Update();
         Move();
+        EnemyDamage();
     }
     void Move()
     {
         if (target != null)
         {
 
-            Vector3 position = new Vector3(target.position.x, transform.position.y + 7, target.position.z);
+            Vector3 position = new Vector3(target.position.x, transform.position.y, target.position.z);
             transform.LookAt(position);
             _agent.SetDestination(position);
         }
@@ -77,12 +78,13 @@ public class BatEnemy : EnemyBrain, IPlayerDamageable
             {
                 _canAttack = true;
 
-                _agent.speed = 0;
+                
 
 
                 IDamageable characterHit = hit.transform.GetComponent<IDamageable>();
                 if (characterHit != null)
                 {
+                    _agent.speed = 0;   
                     CreateBullet();
                     yield return new WaitForSeconds(1);
                     _agent.speed = _baseMovementSpeed;
