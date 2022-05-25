@@ -127,4 +127,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fireSpeed: 6
   _fireRange: 3
-  _damage: 30
+  _damage: 70

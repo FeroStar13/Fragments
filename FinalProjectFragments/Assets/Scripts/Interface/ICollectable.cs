@@ -1,4 +1,4 @@
 interface ICollectable
 {
-    void Collected(float ammountToAdd);
+    void Collected(Item intendedItem);
 }

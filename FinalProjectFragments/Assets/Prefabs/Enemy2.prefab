@@ -221,6 +221,8 @@ MonoBehaviour:
   _fireAgainTimer: 0
   _fireCooldown: 2
   bulletPrefab: {fileID: 8313029671257686524, guid: dfdaf7e1043c2224eac2a1a746699356, type: 3}
+  _healingPrefab: {fileID: 5703156074189251900, guid: cd0f93c93f8a0ec43a315ab4298e33c1, type: 3}
+  _itemDropChance: 0
 --- !u!195 &8220922195531088895
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -2,22 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectItem : MonoBehaviour
+public class RestoreHp : MonoBehaviour
 {
-    
-    [SerializeField] Item IntendedItem;
-
-
+    [SerializeField] float _healToIncrese;
     private void OnCollisionEnter(Collision collision)
     {
-        ICollectable item = collision.transform.GetComponent<ICollectable>();
+        IHealeable item = collision.transform.GetComponent<IHealeable>();
         if (item == null)
         {
 
         }
         else
         {
-            item.Collected(IntendedItem);
+            item.Healed(_healToIncrese);
             Destroy(gameObject);
         }
     }

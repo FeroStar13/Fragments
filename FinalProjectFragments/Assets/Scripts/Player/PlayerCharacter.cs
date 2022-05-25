@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCharacter : MonoBehaviour, IDamageable
+public class PlayerCharacter : MonoBehaviour, IDamageable, ICollectable, IHealeable
 {
     [Header("Movement")]
     [SerializeField] float _runningSpeed;
@@ -49,6 +49,8 @@ public class PlayerCharacter : MonoBehaviour, IDamageable
     [SerializeField] float _ammountOfEnergyCannons;
     [SerializeField] Item _energyCannonItem;
 
+    [Header("Inventory")]
+    [SerializeField] inventory _inv;
 
     [SerializeField] float _currentTime;
 
@@ -61,7 +63,7 @@ public class PlayerCharacter : MonoBehaviour, IDamageable
     Animator animatorInChild;
     Animator animator;
     Rigidbody _rigidBody;
-    [SerializeField] inventory _inv;
+
 
     public float PlayerStamina 
     { 
@@ -401,5 +403,18 @@ public class PlayerCharacter : MonoBehaviour, IDamageable
             _inv.RemoveItem(_energyCannonItem);
         }
     }
+
+    public void Collected(Item intendedItem)
+    {
+        _inv.AddItem(intendedItem);
+    }
+
+    public void Healed(float ammountOfHeal)
+    {
+
+        _hp += ammountOfHeal;
+
+        UIManager.instance.UpdateHp(_hp);
+            }
 }
    

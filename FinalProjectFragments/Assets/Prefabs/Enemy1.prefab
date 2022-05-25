@@ -116,13 +116,16 @@ MonoBehaviour:
   maxDistance: 20
   _coneAngle: 360
   _movementSpeed: 2
-  _baseMovementSpeed: 1
+  _baseMovementSpeed: 2
   _hp: 100
   enemyHpImage: {fileID: 6940021914887158346}
   _attackRange: 2
   _damage: 5
   _timeToHit: 1
   _attackPerStopWalk: 1
+  _crystalDropPrefab: {fileID: 2855140506395228707, guid: 4c46b7788b435df41b9ace75b701571e, type: 3}
+  _ironDropPrefab: {fileID: 999380254996810514, guid: 11f1a727469c2fe4a813a0b8703f8560, type: 3}
+  _itemDropChance: 0
 --- !u!195 &6940021913212396907
 NavMeshAgent:
   m_ObjectHideFlags: 0

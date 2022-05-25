@@ -14,19 +14,25 @@ public class BatEnemy : EnemyBrain, IPlayerDamageable
     [SerializeField] float _fireCooldown;
     [SerializeField] GameObject bulletPrefab;
 
+    [Header("DropItem")]
+    [SerializeField] GameObject _healingPrefab;
+    [SerializeField] float _itemDropChance;
+
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
 
+        _itemDropChance = Random.Range(0, 20);
+
         _agent.speed = _movementSpeed;
     }
 
-    
-         protected override void Update()
+
+    protected override void Update()
     {
         _fireAgainTimer += Time.deltaTime;
 
-        
+
         base.Update();
         Move();
         EnemyDamage();
@@ -44,7 +50,7 @@ public class BatEnemy : EnemyBrain, IPlayerDamageable
 
     public void TakeDamage(float DamageToTake)
     {
-        
+
         _hp = _hp - DamageToTake;
         Die();
         UpdateEnemyHP(_hp);
@@ -55,6 +61,7 @@ public class BatEnemy : EnemyBrain, IPlayerDamageable
         GameManager.instance.BatDied(this);
         if (_hp <= 1)
         {
+            ItemDrop();
             Destroy(gameObject);
         }
     }
@@ -78,13 +85,13 @@ public class BatEnemy : EnemyBrain, IPlayerDamageable
             {
                 _canAttack = true;
 
-                
+
 
 
                 IDamageable characterHit = hit.transform.GetComponent<IDamageable>();
                 if (characterHit != null)
                 {
-                    _agent.speed = 0;   
+                    _agent.speed = 0;
                     CreateBullet();
                     yield return new WaitForSeconds(1);
                     _agent.speed = _baseMovementSpeed;
@@ -103,6 +110,14 @@ public class BatEnemy : EnemyBrain, IPlayerDamageable
             Destroy(bullet, 4f);
             _fireAgainTimer = 0;
             _canAttack = false;
+        }
+    }
+    void ItemDrop()
+    {
+
+        if (_itemDropChance > 10 && _itemDropChance < 20)
+        {
+            Instantiate(_healingPrefab, transform.position, transform.rotation);
         }
     }
 }

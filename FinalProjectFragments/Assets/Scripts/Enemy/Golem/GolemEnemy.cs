@@ -15,7 +15,10 @@ public class GolemEnemy : EnemyBrain, IPlayerDamageable
     [SerializeField] float _attackPerStopWalk; //quantidade de tempo que dura o ataque
 
     [Header("DropItem")]
-    [SerializeField] GameObject CrystalDropPrefab;
+    [SerializeField] GameObject _crystalDropPrefab;
+    [SerializeField] GameObject _ironDropPrefab;
+    [SerializeField] float _itemDropChance;
+  
 
     NavMeshAgent _agent;
 
@@ -23,7 +26,11 @@ public class GolemEnemy : EnemyBrain, IPlayerDamageable
     {
         _agent = GetComponent<NavMeshAgent>();
 
+        _itemDropChance = Random.Range(0, 20);
+
         _agent.speed = _movementSpeed;
+
+      
     }
     protected override void Update()
     {
@@ -31,14 +38,15 @@ public class GolemEnemy : EnemyBrain, IPlayerDamageable
         base.Update();
         Move();
     }
+
+
+    
     public void Die()
     {
         GameManager.instance.GolemDied(this);
         if (_hp <= 1)
         {
-           
-            //GameObject drop = Instantiate(CrystalDropPrefab, transform.position, transform.rotation);
-            
+            ItemDrop();
             Destroy(gameObject);
         }
     }
@@ -99,5 +107,19 @@ public class GolemEnemy : EnemyBrain, IPlayerDamageable
     public void UpdateEnemyHP(float hpDoEnemy)
     {
         enemyHpImage.fillAmount = hpDoEnemy / 100.0f;
+    }
+
+    void ItemDrop()
+    {
+        
+
+        if(_itemDropChance > 6 && _itemDropChance < 15)
+        {
+            Instantiate(_crystalDropPrefab, transform.position, transform.rotation);
+        }
+        if(_itemDropChance > 15 && _itemDropChance < 20)
+        {
+            Instantiate(_ironDropPrefab, transform.position, transform.rotation);
+        }
     }
 }

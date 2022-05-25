@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogs:
   - ...
-  - testa este nivel
-  - terminamos aqui
-  myColor: {r: 1, g: 0, b: 0, a: 1}
+  - "Este \xE9 um nivel de testes"
+  - derrota todos os inimigos
+  - "bot\xE3o esquero do rato dispara, bot\xE3o direito do rato ataca em area, a
+    tecla \"I\" abre o inventario, podes usar itens encontrados no ch\xE3o para criar
+    armas especiais, podes trocar entre armas especias com as setas, ao persionar
+    a tecla \"espa\xE7o\" podes dar um pequeno impulso na dire\xE7ao desejada "
+  myColor: {r: 0, g: 0, b: 0, a: 1}
