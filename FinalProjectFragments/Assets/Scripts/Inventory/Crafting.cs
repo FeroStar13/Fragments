@@ -55,4 +55,24 @@ public class Crafting : MonoBehaviour
         _inv.AddItem(craftedItem);
         player.AmmountOfEnergyCannons++;
     }
+
+    public void Craft3()
+    {
+        for (int i = 0; i < itemsNeddedToCraft.Count; i++)
+        {
+            if (_inv.Contains(itemsNeddedToCraft[i]) == false)
+            {
+                return;
+            }
+        }
+
+        for (int i = 0; i < itemsNeddedToCraft.Count; i++)
+        {
+            _inv.RemoveItem(itemsNeddedToCraft[i]);
+        }
+      
+        player.PlayerFireCharge += 50;
+        player.CanFire = true;
+        UIManager.instance.UpdateCharge(player.PlayerFireCharge);
+    }
 }

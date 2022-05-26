@@ -30,6 +30,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject ExplosiveBoxInUI;
     [SerializeField] GameObject SuperCannonInUI;
 
+    [Header("BossHealthBar")]
+
+    [SerializeField] Image _bossHpBarImage;
+
+    [Header("Reference")]
+    [SerializeField] PlayerCharacter player;
+
     private void Awake()
     {
         if (instance != null)
@@ -96,6 +103,7 @@ public class UIManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I) && _inventoryIsOpen == false)
         {
             _inventoryIsOpen = true;
+            player.CanFire = false;
             Inventory.SetActive(_inventoryIsOpen);
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
@@ -103,14 +111,19 @@ public class UIManager : MonoBehaviour
             return;
 
         }
-        if(Input.GetKeyDown(KeyCode.I) && _inventoryIsOpen == true)
+        if(Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.Escape) && _inventoryIsOpen == true)
         {
             _inventoryIsOpen = false;
+            player.CanFire = true;
             Inventory.SetActive(_inventoryIsOpen);
             Cursor.lockState = CursorLockMode.Confined  ;
             Cursor.visible = false;
             return;
         }
     
+    }
+    public void UpdateBossHp(float hpDoBoss)
+    {
+        _bossHpBarImage.fillAmount = hpDoBoss / 1000;
     }
 }

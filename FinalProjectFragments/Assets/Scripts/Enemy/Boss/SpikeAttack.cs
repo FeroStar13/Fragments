@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExplosiveBox : MonoBehaviour
+public class SpikeAttack : MonoBehaviour
 {
-
     [SerializeField] float _damage;
     [SerializeField] float _explosionRange;
-    [SerializeField] float _timeToExplode;
+    [SerializeField] float _timesToHit;
+    [SerializeField] float _delayBetweenAttacks;
 
     private void Start()
     {
@@ -17,13 +17,12 @@ public class ExplosiveBox : MonoBehaviour
     {
 
         StartCoroutine(ExplosionTimer());
-       
+
     }
 
     IEnumerator ExplosionTimer()
     {
-        yield return new WaitForSeconds(_timeToExplode);
-
+      
         Collider[] hitColliders = new Collider[100];
 
         hitColliders = Physics.OverlapSphere(transform.position, _explosionRange);
@@ -32,17 +31,7 @@ public class ExplosiveBox : MonoBehaviour
         for (var i = 0; i < hitColliders.Length; i++)
         {
             Transform tempTarget = hitColliders[i].transform;
-            IPlayerDamageable interacted = tempTarget.GetComponent<IPlayerDamageable>();
-
-            if (interacted == null)
-            {
-            }
-            else
-            {                         
-                interacted.TakeDamage(_damage);
-                     
-            }
-
+           
             IDamageable interacted2 = tempTarget.GetComponent<IDamageable>();
 
             if (interacted2 == null)
@@ -50,13 +39,18 @@ public class ExplosiveBox : MonoBehaviour
             }
             else
             {
-                interacted2.TakeDamage(_damage);
-               
+
+                for (int e = 0; e < _timesToHit; e++)
+                {
+                    interacted2.TakeDamage(_damage);
+                    yield return new WaitForSeconds(_delayBetweenAttacks);
+                }
+
             }
-
-
         }
         Destroy(gameObject);
-
     }
+
+ 
 }
+

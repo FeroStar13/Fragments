@@ -87,6 +87,7 @@ public class PlayerCharacter : MonoBehaviour, IDamageable, ICollectable, IHealea
 
     public float AmmountOfExplosiveBoxes { get => _ammountOfExplosiveBoxes; set => _ammountOfExplosiveBoxes = value; }
     public float AmmountOfEnergyCannons { get => _ammountOfEnergyCannons; set => _ammountOfEnergyCannons = value; }
+    public bool CanFire { get => _canFire; set => _canFire = value; }
 
     private void Update()
     {
@@ -199,7 +200,7 @@ public class PlayerCharacter : MonoBehaviour, IDamageable, ICollectable, IHealea
 
     void Fire()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && _canFire == true)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && CanFire == true)
         {
 
             StartCoroutine(TimeThatStopAttack());
@@ -208,7 +209,7 @@ public class PlayerCharacter : MonoBehaviour, IDamageable, ICollectable, IHealea
 
             if (PlayerFireCharge <= 0)
             {
-                _canFire = false;
+                CanFire = false;
             }
 
             //se tiver carga despara
@@ -277,10 +278,10 @@ public class PlayerCharacter : MonoBehaviour, IDamageable, ICollectable, IHealea
         IEnumerator TimeThatStopFire() //currotina que so permite usar uma arma de cada vez
         {
             
-            _canFire = false;
+            CanFire = false;
             animatorInChild.SetTrigger("Attack");
             yield return new WaitForSeconds(_meleeAttackRate);
-            _canFire = true;
+            CanFire = true;
         }
     }
 

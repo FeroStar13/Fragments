@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GolemEnemy _golemPrefab;
     [SerializeField] BatEnemy _batPrefab;
 
+    [SerializeField] GameObject BossActivation;
+
     public static GameManager instance;
 
     private void Awake()
@@ -51,11 +53,7 @@ public class GameManager : MonoBehaviour
     public void GolemDied(GolemEnemy golemThatDied)
     {
         GolemAlive.Remove(golemThatDied);
-        if (GolemAlive.Count <= 0)
-        {
-
-           //    GolemSpawn();
-        }
+        BossSpawn();
     }
 
     void BatSpawn()
@@ -72,11 +70,16 @@ public class GameManager : MonoBehaviour
     public void BatDied(BatEnemy batThatDied)
     {
         BatAlive.Remove(batThatDied);
-        if (BatAlive.Count <= 0)
+        BossSpawn();
+
+    }
+
+    void BossSpawn()
+    {
+        if(BatAlive.Count <= 0 && GolemAlive.Count <= 0)
         {
-
-           // BatSpawn();
+            BossActivation.SetActive(true);
         }
-
+      
     }
 }

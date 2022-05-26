@@ -9,6 +9,7 @@ public class EnemyFire : MonoBehaviour
     [SerializeField] float _movementSpeed;
     [SerializeField] float _damage;
 
+
     private void Awake()
     {
         _rigidBody = GetComponent<Rigidbody>();
