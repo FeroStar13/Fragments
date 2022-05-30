@@ -19,10 +19,9 @@ public class UIManager : MonoBehaviour
 
     [Header("Inventory")]
     [SerializeField] GameObject Inventory;
-
+   [SerializeField] bool _canOpenInventory;
     [SerializeField] GameObject InventoryBackground;
     [SerializeField] GameObject CraftingBackground;
-
     [SerializeField] bool _inventoryIsOpen = false;
 
     [Header("SpecialWeapons")]
@@ -37,6 +36,19 @@ public class UIManager : MonoBehaviour
     [Header("Reference")]
     [SerializeField] PlayerCharacter player;
 
+    [Header("Options")]
+    [SerializeField] GameObject ControlUI;
+    [SerializeField] GameObject AudioUI;
+    [SerializeField] GameObject VideoUI;
+    [SerializeField] GameObject PauseUI;
+    bool _gameEsc;
+
+    [Header("DeathMensage")]
+    [SerializeField] GameObject DeathUI;
+
+    [Header("Mouse")]
+    [SerializeField] bool _mouseActive = false;
+
     private void Awake()
     {
         if (instance != null)
@@ -48,13 +60,36 @@ public class UIManager : MonoBehaviour
             instance = this;
 
         }
+        _mouseActive = false;
         Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = false;
+        Cursor.visible = _mouseActive;
     }
 
     private void Update()
     {
-        OpenInventory();
+        
+        if (_canOpenInventory == true)
+        {
+            OpenInventory();
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (_gameEsc)
+            {
+               ResumeGame();
+               
+                _gameEsc = false;
+            }
+            else
+            {
+                Pause();
+             
+                _gameEsc = true;
+            }
+        }
+
     }
     public void UpdateStamina(float staminaDoPlayer)
     {
@@ -100,10 +135,12 @@ public class UIManager : MonoBehaviour
 
     void OpenInventory()
     {
-        if (Input.GetKeyDown(KeyCode.I) && _inventoryIsOpen == false)
+        if (Input.GetKeyDown(KeyCode.I) && _inventoryIsOpen == false )
         {
             _inventoryIsOpen = true;
             player.CanFire = false;
+            _gameEsc = false;
+          
             Inventory.SetActive(_inventoryIsOpen);
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
@@ -115,6 +152,8 @@ public class UIManager : MonoBehaviour
         {
             _inventoryIsOpen = false;
             player.CanFire = true;
+            _gameEsc = true;
+         
             Inventory.SetActive(_inventoryIsOpen);
             Cursor.lockState = CursorLockMode.Confined  ;
             Cursor.visible = false;
@@ -125,5 +164,65 @@ public class UIManager : MonoBehaviour
     public void UpdateBossHp(float hpDoBoss)
     {
         _bossHpBarImage.fillAmount = hpDoBoss / 1000;
+    }
+
+    public void ChangeScene(string sceneName)
+    {
+        _mouseActive = true;
+        Time.timeScale = 1;
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public void ExitGame()
+
+    {
+        Application.Quit();
+    }
+    public void ControlOpen()
+    {
+        ControlUI.SetActive(true);
+        AudioUI.SetActive(false);
+        VideoUI.SetActive(false);
+    }
+    public void AudioOpen()
+    {
+        ControlUI.SetActive(false);
+        AudioUI.SetActive(true);
+        VideoUI.SetActive(false);
+    }
+    public void VideoOpen()
+    {
+        ControlUI.SetActive(false);
+        AudioUI.SetActive(false);
+        VideoUI.SetActive(true);
+    }
+    
+    private void Pause()
+    {
+        _canOpenInventory = false;
+        Time.timeScale = 0;
+        _mouseActive = true;
+        PauseUI.SetActive(true);
+    }
+    public void ResumeGame()
+    {
+        _mouseActive = false;
+        _canOpenInventory = true;
+        Time.timeScale = 1;       
+       PauseUI.gameObject.SetActive(false);
+
+    }
+
+    public void Death()
+    {
+        StartCoroutine(DeathCourotine());   
+
+    }
+
+    IEnumerator DeathCourotine()
+    {
+        DeathUI.SetActive(true);
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene("MainMenu");
     }
 }

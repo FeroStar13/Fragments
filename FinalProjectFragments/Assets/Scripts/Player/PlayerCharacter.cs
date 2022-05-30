@@ -294,7 +294,11 @@ public class PlayerCharacter : MonoBehaviour, IDamageable, ICollectable, IHealea
 
     public void Die()
     {
-        
+        if(_hp <= 0)
+        {
+            UIManager.instance.Death();
+            Destroy(gameObject);
+        }
     }
 
     void Rolling()
