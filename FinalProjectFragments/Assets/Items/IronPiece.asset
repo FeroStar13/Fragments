@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: IronPiece
   m_EditorClassIdentifier: 
   itemName: IronPiece
-  Icon: {fileID: 21300000, guid: 28e77463d6cd45c4d8d87c43eeda6a21, type: 3}
+  Icon: {fileID: 21300000, guid: 2690c794b670bbb47be3a643995a278c, type: 3}
   ammount: 0

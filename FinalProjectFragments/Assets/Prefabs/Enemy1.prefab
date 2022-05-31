@@ -123,8 +123,8 @@ MonoBehaviour:
   _damage: 5
   _timeToHit: 1
   _attackPerStopWalk: 1
-  _crystalDropPrefab: {fileID: 2855140506395228707, guid: 4c46b7788b435df41b9ace75b701571e, type: 3}
-  _ironDropPrefab: {fileID: 999380254996810514, guid: 11f1a727469c2fe4a813a0b8703f8560, type: 3}
+  _crystalDropPrefab: {fileID: 4469989291823549044, guid: 043b79b1096e26e4fa93dd39cd1dbf32, type: 3}
+  _ironDropPrefab: {fileID: 4265590163354555427, guid: 8dbe9d218d6c8164b885bae85acc016d, type: 3}
   _itemDropChance: 0
 --- !u!195 &6940021913212396907
 NavMeshAgent:

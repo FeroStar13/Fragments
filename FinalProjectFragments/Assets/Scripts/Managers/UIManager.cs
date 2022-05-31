@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
 
     [Header("Dialog")]
     [SerializeField] private Text npcDialog;
+    [SerializeField] private Text npcName;
 
     [Header("Inventory")]
     [SerializeField] GameObject Inventory;
@@ -104,13 +105,20 @@ public class UIManager : MonoBehaviour
         chargeImage.fillAmount = chargeDoPlayer / 100.0f;
     }
 
-    public void DialogOnScrene(string dialogToDisplay, Color intendedColor)
+    public void DialogOnScrene(string dialogToDisplay, Color intendedColor, Font intendedFont)
     {
         npcDialog.text = dialogToDisplay;
         npcDialog.color = intendedColor;
+       
+        npcDialog.font = intendedFont;
 
     }
-
+    public void nameDialogOnScrene(string name, Font intendedFont, Color intendedColor)
+    {
+        npcName.text = name;
+        npcName.font = intendedFont;
+        npcName.color = intendedColor;
+    }
     public void InventoryButton()
     {
         InventoryBackground.SetActive(true);

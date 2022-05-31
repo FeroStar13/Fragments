@@ -27,7 +27,8 @@ public class NPCDialog : MonoBehaviour, IInteractable
                 dialogBackGround.gameObject.SetActive(false);
                 positionInDialog = 0;
             }
-            UIManager.instance.DialogOnScrene(myDialogTree.Dialogs[positionInDialog], myDialogTree.MyColor);
+            UIManager.instance.DialogOnScrene(myDialogTree.Dialogs[positionInDialog], myDialogTree.MyDialogColor,  myDialogTree.MyFont);
+            UIManager.instance.nameDialogOnScrene(myDialogTree.Name, myDialogTree.MyFont, myDialogTree.MyNameColor);
         }
     }
 }

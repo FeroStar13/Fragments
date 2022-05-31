@@ -12,9 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: bc22f54df8031154ba9794a3f5101704
   - enabled: 1
+    path: Assets/Scenes/Lvl1 - BlessedGear.unity
+    guid: ead2c0c39444c104495a54383ace9c08
+  - enabled: 1
     path: Assets/Scenes/Options.unity
     guid: 74c88d725aceec94e9f7fbbea2c32b49
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TestScene.unity
     guid: 4d8442f90c4290d4d82397ad58045660
   m_configObjects: {}

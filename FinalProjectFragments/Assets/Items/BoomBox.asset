@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: BoomBox
   m_EditorClassIdentifier: 
   itemName: BoomBox
-  Icon: {fileID: 21300000, guid: 597d392599c55bd4296ec1bf7b39f250, type: 3}
+  Icon: {fileID: 21300000, guid: 83653cc4560867c45ac0f37dc87de704, type: 3}
   ammount: 0

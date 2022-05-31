@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c7a2692966e3be448a0dfe934eefbf3, type: 3}
   m_Name: PrimeiraFala
   m_EditorClassIdentifier: 
+  _name: Bruno
   dialogs:
   - ...
   - "Este \xE9 um nivel de testes"
@@ -20,4 +21,6 @@ MonoBehaviour:
     tecla \"I\" abre o inventario, podes usar itens encontrados no ch\xE3o para criar
     armas especiais, podes trocar entre armas especias com as setas, ao persionar
     a tecla \"espa\xE7o\" podes dar um pequeno impulso na dire\xE7ao desejada "
-  myColor: {r: 0, g: 0, b: 0, a: 1}
+  myNameColor: {r: 0.7490196, g: 0.5803922, b: 0.023529412, a: 1}
+  myDialogColor: {r: 0.2784314, g: 0.12156863, b: 0.015686275, a: 1}
+  myFont: {fileID: 12800000, guid: a3dda62f2f96e7341a69a971e7fb6a4c, type: 3}
