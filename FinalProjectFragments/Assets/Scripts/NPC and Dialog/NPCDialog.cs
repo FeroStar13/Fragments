@@ -7,17 +7,25 @@ public class NPCDialog : MonoBehaviour, IInteractable
     [SerializeField] ScriptableDialog myDialogTree;
     [SerializeField] GameObject dialogBackGround;
 
+    bool _destroyExclamation = true;
+
     int positionInDialog;
 
     public void Interact(PlayerCharacter playerThatInteract)
     {
         Conversation();
+        if(_destroyExclamation == true)
+        {
+            Destroy(transform.GetChild(0).gameObject);
+            _destroyExclamation = false;
+
+        }
     }
 
     void Conversation()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
+       
+     
             positionInDialog++;
 
             dialogBackGround.gameObject.SetActive(true);
@@ -29,6 +37,6 @@ public class NPCDialog : MonoBehaviour, IInteractable
             }
             UIManager.instance.DialogOnScrene(myDialogTree.Dialogs[positionInDialog], myDialogTree.MyDialogColor,  myDialogTree.MyFont);
             UIManager.instance.nameDialogOnScrene(myDialogTree.Name, myDialogTree.MyFont, myDialogTree.MyNameColor);
-        }
+        
     }
 }
