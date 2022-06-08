@@ -129,6 +129,7 @@ public class PlayerCharacter : MonoBehaviour, IDamageable, ICollectable, IHealea
        // controller = GetComponent<CharacterController>();
         animatorInChild = GetComponentInChildren<Animator>();
         animator = GetComponent<Animator>();
+       
       
     }
 
@@ -297,7 +298,7 @@ public class PlayerCharacter : MonoBehaviour, IDamageable, ICollectable, IHealea
         if(_hp <= 0)
         {
             UIManager.instance.Death();
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 

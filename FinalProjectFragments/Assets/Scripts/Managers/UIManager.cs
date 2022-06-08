@@ -50,6 +50,10 @@ public class UIManager : MonoBehaviour
     [Header("Mouse")]
     [SerializeField] bool _mouseActive = false;
 
+    [Header("Respawn")]
+    [SerializeField] GameObject _playerPrefab;
+    [SerializeField] Vector3 _playerSpawn;
+
     private void Awake()
     {
         if (instance != null)
@@ -223,14 +227,14 @@ public class UIManager : MonoBehaviour
 
     public void Death()
     {
-        StartCoroutine(DeathCourotine());   
+        DeathUI.SetActive(true);
 
     }
 
-    IEnumerator DeathCourotine()
+    public void Respawn()
     {
-        DeathUI.SetActive(true);
-        yield return new WaitForSeconds(3);
-        SceneManager.LoadScene("MainMenu");
+        DeathUI.SetActive(false);
+        player.transform.position = _playerSpawn;
+        player.gameObject.SetActive(true);
     }
 }

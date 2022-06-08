@@ -21,10 +21,12 @@ public class GolemEnemy : EnemyBrain, IPlayerDamageable
   
 
     NavMeshAgent _agent;
+    Animator _animation;
 
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
+        _animation = GetComponent<Animator>();
 
         _itemDropChance = Random.Range(0, 20);
 
@@ -47,8 +49,17 @@ public class GolemEnemy : EnemyBrain, IPlayerDamageable
         if (_hp <= 1)
         {
             ItemDrop();
-            Destroy(gameObject);
+
+            StartCoroutine(DeathAnimation());
         }
+    }
+
+    IEnumerator DeathAnimation()
+    {
+        _animation.SetTrigger("Death");
+        _agent.speed = 0;
+        yield return new WaitForSeconds(1.5f);
+        Destroy(gameObject);
     }
 
     public void TakeDamage(float DamageToTake)
@@ -62,10 +73,11 @@ public class GolemEnemy : EnemyBrain, IPlayerDamageable
     {
         if (target != null)
         {
-            
+            _animation.SetFloat("Speed", _agent.speed);
             Vector3 position = new Vector3(target.position.x, transform.position.y, target.position.z);
             transform.LookAt(position);
             _agent.SetDestination(position);
+           
         }
     }
 
@@ -94,7 +106,7 @@ public class GolemEnemy : EnemyBrain, IPlayerDamageable
                 _agent.speed = 0;
                 for (int i = 0; i < _timeToHit; i++)
                 {
-                    
+                    _animation.SetTrigger("Attack");
                     characterHit.TakeDamage(_damage);
                    
                     yield return new WaitForSeconds(_attackPerStopWalk);
