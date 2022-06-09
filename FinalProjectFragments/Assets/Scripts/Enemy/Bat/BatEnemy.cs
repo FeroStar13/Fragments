@@ -13,6 +13,7 @@ public class BatEnemy : EnemyBrain, IPlayerDamageable
     [SerializeField] float _fireAgainTimer;
     [SerializeField] float _fireCooldown;
     [SerializeField] GameObject bulletPrefab;
+    [SerializeField] Transform _firePosition;
 
     [Header("DropItem")]
     [SerializeField] GameObject _healingPrefab;
@@ -104,7 +105,7 @@ public class BatEnemy : EnemyBrain, IPlayerDamageable
     {
         if (_fireAgainTimer >= _fireCooldown && _canAttack == true)
         {
-            GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.localRotation);
+            GameObject bullet = Instantiate(bulletPrefab, _firePosition.transform.position, transform.localRotation);
             EnemyFire fire = bullet.GetComponent<EnemyFire>();
             fire.FireMove(target.position - bullet.transform.position);
             Destroy(bullet, 4f);

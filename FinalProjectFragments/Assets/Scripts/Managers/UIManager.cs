@@ -50,9 +50,7 @@ public class UIManager : MonoBehaviour
     [Header("Mouse")]
     [SerializeField] bool _mouseActive = false;
 
-    [Header("Respawn")]
-    [SerializeField] GameObject _playerPrefab;
-    [SerializeField] Vector3 _playerSpawn;
+
 
     private void Awake()
     {
@@ -228,13 +226,9 @@ public class UIManager : MonoBehaviour
     public void Death()
     {
         DeathUI.SetActive(true);
-
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
     }
 
-    public void Respawn()
-    {
-        DeathUI.SetActive(false);
-        player.transform.position = _playerSpawn;
-        player.gameObject.SetActive(true);
-    }
+
 }

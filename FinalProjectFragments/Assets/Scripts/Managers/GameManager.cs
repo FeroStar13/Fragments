@@ -13,7 +13,16 @@ public class GameManager : MonoBehaviour
     [SerializeField] GolemEnemy _golemPrefab;
     [SerializeField] BatEnemy _batPrefab;
 
-    [SerializeField] GameObject BossActivation;
+    [SerializeField] GameObject _BossRoomTeleporter;
+
+    [Header("Respawn")]
+    [SerializeField] Vector3 _playerSpawn;
+
+    [Header("Reference")]
+    [SerializeField] PlayerCharacter player;
+
+    [Header("DeathMensage")]
+    [SerializeField] GameObject DeathUI;
 
     public static GameManager instance;
 
@@ -78,10 +87,19 @@ public class GameManager : MonoBehaviour
     {
         if(BatAlive.Count <= 0 && GolemAlive.Count <= 0)
         {
-            BossActivation.SetActive(true);
+            _BossRoomTeleporter.SetActive(true);
         }
       
     }
 
-    
+    public void Respawn()
+    {
+        DeathUI.SetActive(false);
+        player.transform.position = _playerSpawn;
+        player.gameObject.SetActive(true);
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;
+        player.Hp = 100;
+        UIManager.instance.UpdateHp(player.Hp);
+    }
 }
