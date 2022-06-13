@@ -345,18 +345,26 @@ public class PlayerCharacter : MonoBehaviour, IDamageable, ICollectable, IHealea
         if (Input.GetKeyDown(KeyCode.E))
             
             {
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.forward, out hit, 5))
+           // RaycastHit hit;
+           // if (Physics.Raycast(transform.position, transform.forward, out hit, 5))
             {
-                IInteractable interacted = hit.transform.GetComponent<IInteractable>();
+                Collider[] hitColliders = new Collider[100];
 
-                if (interacted == null)
-                {
-                }
-                else
-                {
-                    interacted.Interact(this);
+                hitColliders = Physics.OverlapSphere(transform.position, _meleeAttackRange);
 
+                for (var i = 0; i < hitColliders.Length; i++)
+                {
+                    Transform tempTarget = hitColliders[i].transform;
+                    IInteractable interacted = tempTarget.transform.GetComponent<IInteractable>();
+
+                    if (interacted == null)
+                    {
+                    }
+                    else
+                    {
+                        interacted.Interact(this);
+
+                    }
                 }
             }
         }    

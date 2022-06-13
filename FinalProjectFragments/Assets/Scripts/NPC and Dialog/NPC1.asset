@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c7a2692966e3be448a0dfe934eefbf3, type: 3}
+  m_Name: NPC1
+  m_EditorClassIdentifier: 
+  _name: Bruno
+  dialogs:
+  - ...
+  - The village of BlessedGear is a good place to live, people say that the outside
+    is dangerous and got a lot of monsters and other terrifying things.
+  - Some people tried to leave to find power and adventures, but for some reason
+    no one came back, i think they propably died on the ruined that are not so far
+    form the village.
+  - "I believe that in the inside of that main structure thair\xB4s a big monster
+    that guard an inportant thing, may be a Fragment!"
+  - "Whait, you don\xB4t know what is a Fragment? A fragment is a artfact with power
+    that can change the world, they are 5 and its belived that if you get them all
+    you can do whatever you want."
+  myNameColor: {r: 0.7490196, g: 0.5803922, b: 0.023529412, a: 1}
+  myDialogColor: {r: 0.2784314, g: 0.12156863, b: 0.015686275, a: 1}
+  myFont: {fileID: 12800000, guid: a3dda62f2f96e7341a69a971e7fb6a4c, type: 3}

@@ -10,17 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c7a2692966e3be448a0dfe934eefbf3, type: 3}
-  m_Name: PrimeiraFala
+  m_Name: NPC2
   m_EditorClassIdentifier: 
-  _name: Bruno
+  _name: Jonny
   dialogs:
   - ...
-  - "Este \xE9 um nivel de testes"
-  - derrota todos os inimigos
-  - "bot\xE3o esquero do rato dispara, bot\xE3o direito do rato ataca em area, a
-    tecla \"I\" abre o inventario, podes usar itens encontrados no ch\xE3o para criar
-    armas especiais, podes trocar entre armas especias com as setas, ao persionar
-    a tecla \"espa\xE7o\" podes dar um pequeno impulso na dire\xE7ao desejada "
+  - Left Mouse Click - Fire
+  - Right Mouse Clock - Range Melee Attack
+  - E - Interact
+  - I - Open Inventory
+  - Escape - Pause Game
+  - Shift - Run
+  - Left and Right Arrow - Change Special Weapon
+  - F - Use Special Weapon
   myNameColor: {r: 0.7490196, g: 0.5803922, b: 0.023529412, a: 1}
   myDialogColor: {r: 0.2784314, g: 0.12156863, b: 0.015686275, a: 1}
   myFont: {fileID: 12800000, guid: a3dda62f2f96e7341a69a971e7fb6a4c, type: 3}

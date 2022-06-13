@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SuperfireCannon
   m_EditorClassIdentifier: 
   itemName: SuperFireCannon
-  Icon: {fileID: 21300000, guid: d118160b30e38a8479694282bc98e640, type: 3}
+  Icon: {fileID: 21300000, guid: f624549852a5cae46957cb95a728eff5, type: 3}
   ammount: 0

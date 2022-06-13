@@ -18,7 +18,8 @@ public class GolemEnemy : EnemyBrain, IPlayerDamageable
     [SerializeField] GameObject _crystalDropPrefab;
     [SerializeField] GameObject _ironDropPrefab;
     [SerializeField] float _itemDropChance;
-  
+
+    bool isDead = false;
 
     NavMeshAgent _agent;
     Animator _animation;
@@ -45,13 +46,16 @@ public class GolemEnemy : EnemyBrain, IPlayerDamageable
     
     public void Die()
     {
-        GameManager.instance.GolemDied(this);
-        if (_hp <= 1)
-        {
-            ItemDrop();
+       
+      
+            GameManager.instance.GolemDied(this);
+            if (_hp <= 1)
+            {
+                ItemDrop();
 
-            StartCoroutine(DeathAnimation());
-        }
+                StartCoroutine(DeathAnimation());
+            }
+        
     }
 
     IEnumerator DeathAnimation()
@@ -65,10 +69,14 @@ public class GolemEnemy : EnemyBrain, IPlayerDamageable
     public void TakeDamage(float DamageToTake)
     {
       
-        _hp = _hp - DamageToTake;
-        Die();
-        UpdateEnemyHP(_hp);
+            _hp = _hp - DamageToTake;
+            Die();
+            UpdateEnemyHP(_hp);
+        
+            
+        
     }
+      
     void Move()
     {
         if (target != null)
