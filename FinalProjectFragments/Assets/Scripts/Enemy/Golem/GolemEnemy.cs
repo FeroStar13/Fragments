@@ -19,15 +19,17 @@ public class GolemEnemy : EnemyBrain, IPlayerDamageable
     [SerializeField] GameObject _ironDropPrefab;
     [SerializeField] float _itemDropChance;
 
-    bool isDead = false;
+   [SerializeField] bool isDead = false;
 
     NavMeshAgent _agent;
     Animator _animation;
+    Renderer _renderer;
 
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
         _animation = GetComponent<Animator>();
+        _renderer = GetComponentInChildren<Renderer>();
 
         _itemDropChance = Random.Range(0, 20);
 
@@ -60,6 +62,7 @@ public class GolemEnemy : EnemyBrain, IPlayerDamageable
 
     IEnumerator DeathAnimation()
     {
+        isDead = true;
         _animation.SetTrigger("Death");
         _agent.speed = 0;
         yield return new WaitForSeconds(1.5f);
@@ -68,10 +71,14 @@ public class GolemEnemy : EnemyBrain, IPlayerDamageable
 
     public void TakeDamage(float DamageToTake)
     {
-      
+      if(isDead == false)
+        {
             _hp = _hp - DamageToTake;
+            StartCoroutine(ChangeColor());
             Die();
             UpdateEnemyHP(_hp);
+        }
+            
         
             
         
@@ -79,7 +86,7 @@ public class GolemEnemy : EnemyBrain, IPlayerDamageable
       
     void Move()
     {
-        if (target != null)
+        if (target != null && isDead == false)
         {
             _animation.SetFloat("Speed", _agent.speed);
             Vector3 position = new Vector3(target.position.x, transform.position.y, target.position.z);
@@ -141,5 +148,14 @@ public class GolemEnemy : EnemyBrain, IPlayerDamageable
         {
             Instantiate(_ironDropPrefab, transform.position, transform.rotation);
         }
+    }
+
+    IEnumerator ChangeColor()
+    {
+        _renderer.material.color = Color.red;
+
+        yield return new WaitForSeconds(0.25f);
+
+        _renderer.material.color = Color.white;
     }
 }

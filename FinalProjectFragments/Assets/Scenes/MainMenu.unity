@@ -441,7 +441,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2109916502}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: Exit
+        m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1049,6 +1049,7 @@ MonoBehaviour:
   hpImage: {fileID: 0}
   chargeImage: {fileID: 0}
   npcDialog: {fileID: 0}
+  npcName: {fileID: 0}
   Inventory: {fileID: 0}
   _canOpenInventory: 0
   InventoryBackground: {fileID: 0}

@@ -39,6 +39,7 @@ public class PlayerCharacter : MonoBehaviour, IDamageable, ICollectable, IHealea
     [SerializeField] bool _canAttack = true;
     [SerializeField] float _meleeAttackRate;
     [SerializeField] int _meleeAttackRange;
+    [SerializeField] GameObject DamageArea;
 
     [Header("EspecialWeapons")]
     [SerializeField] SpecialWeapons myWeapon;
@@ -276,6 +277,19 @@ public class PlayerCharacter : MonoBehaviour, IDamageable, ICollectable, IHealea
 
 
             //Attaque melee action
+         
+
+            _currentTime = 0; //resetar o tempo para atacar
+        }
+        IEnumerator TimeThatStopFire() //currotina que so permite usar uma arma de cada vez
+        {
+            
+            CanFire = false;
+            DamageArea.SetActive(true);
+            animatorInChild.SetTrigger("Attack");
+            yield return new WaitForSeconds(_meleeAttackRate);
+            DamageArea.SetActive(false);
+            CanFire = true;
             Collider[] hitColliders = new Collider[100];
 
             hitColliders = Physics.OverlapSphere(transform.position, _meleeAttackRange);
@@ -298,16 +312,6 @@ public class PlayerCharacter : MonoBehaviour, IDamageable, ICollectable, IHealea
 
                 }
             }
-
-            _currentTime = 0; //resetar o tempo para atacar
-        }
-        IEnumerator TimeThatStopFire() //currotina que so permite usar uma arma de cada vez
-        {
-            
-            CanFire = false;
-            animatorInChild.SetTrigger("Attack");
-            yield return new WaitForSeconds(_meleeAttackRate);
-            CanFire = true;
         }
     }
 

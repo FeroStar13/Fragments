@@ -47,11 +47,7 @@ public class UIManager : MonoBehaviour
     [Header("DeathMensage")]
     [SerializeField] GameObject DeathUI;
 
-    [Header("Mouse")]
-    [SerializeField] bool _mouseActive = false;
-
-
-
+    
     private void Awake()
     {
         if (instance != null)
@@ -63,9 +59,9 @@ public class UIManager : MonoBehaviour
             instance = this;
 
         }
-        _mouseActive = false;
+        
         Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = _mouseActive;
+        Cursor.visible = true;
     }
 
     private void Update()
@@ -79,18 +75,9 @@ public class UIManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (_gameEsc)
-            {
-               ResumeGame();
-               
-                _gameEsc = false;
-            }
-            else
-            {
+           
                 Pause();
-             
-                _gameEsc = true;
-            }
+            
         }
 
     }
@@ -178,7 +165,8 @@ public class UIManager : MonoBehaviour
 
     public void ChangeScene(string sceneName)
     {
-        _mouseActive = true;
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
         Time.timeScale = 1;
         SceneManager.LoadScene(sceneName);
     }
@@ -209,14 +197,18 @@ public class UIManager : MonoBehaviour
     
     private void Pause()
     {
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
         _canOpenInventory = false;
         Time.timeScale = 0;
-        _mouseActive = true;
+      
         PauseUI.SetActive(true);
     }
     public void ResumeGame()
     {
-        _mouseActive = false;
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;  
+    
         _canOpenInventory = true;
         Time.timeScale = 1;       
        PauseUI.gameObject.SetActive(false);

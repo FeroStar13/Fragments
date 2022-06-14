@@ -982,6 +982,7 @@ GameObject:
   - component: {fileID: 24445315}
   - component: {fileID: 24445314}
   - component: {fileID: 24445316}
+  - component: {fileID: 24445317}
   m_Layer: 0
   m_Name: BossWalk (25)
   m_TagString: Untagged
@@ -1068,6 +1069,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -1.9000001, y: 3.0000002, z: 0}
   m_TimeToStationary: 0.5
+--- !u!65 &24445317
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24445312}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.20000009, y: 6, z: 4.000001}
+  m_Center: {x: -1.900031, y: 2.9999971, z: -2.7000624e-14}
 --- !u!1 &27674945
 GameObject:
   m_ObjectHideFlags: 0
@@ -1865,81 +1879,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -1.5500001, y: 2, z: 0}
   m_TimeToStationary: 0.5
---- !u!1 &43339701
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 43339702}
-  - component: {fileID: 43339704}
-  - component: {fileID: 43339703}
-  m_Layer: 5
-  m_Name: BackPack
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &43339702
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 43339701}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 6229530416486896484}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -782, y: -349}
-  m_SizeDelta: {x: 186, y: 219}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &43339703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 43339701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 01aa7074ce7801e44b8fd21289385c52, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &43339704
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 43339701}
-  m_CullTransparentMesh: 1
 --- !u!1 &43707261
 GameObject:
   m_ObjectHideFlags: 0
@@ -3057,6 +2996,101 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 88252884}
   m_Mesh: {fileID: -2432090755550338912, guid: 8f54ffc58c9e46b45b4a1f43c7fd8c5e, type: 3}
+--- !u!1 &88303046
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 88303047}
+  - component: {fileID: 88303050}
+  - component: {fileID: 88303049}
+  - component: {fileID: 88303048}
+  m_Layer: 7
+  m_Name: Aim
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &88303047
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88303046}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.0011000313, y: 0.033199973, z: 0.09229971}
+  m_LocalScale: {x: 0.003122303, y: 0.0031223032, z: 0.003122303}
+  m_Children: []
+  m_Father: {fileID: 5076068839778171422}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &88303048
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88303046}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &88303049
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88303046}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &88303050
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88303046}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &90009003
 GameObject:
   m_ObjectHideFlags: 0
@@ -3181,6 +3215,7 @@ GameObject:
   - component: {fileID: 91212951}
   - component: {fileID: 91212950}
   - component: {fileID: 91212952}
+  - component: {fileID: 91212953}
   m_Layer: 0
   m_Name: BossWalk (14)
   m_TagString: Untagged
@@ -3267,6 +3302,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -1.9000001, y: 3.0000002, z: 0}
   m_TimeToStationary: 0.5
+--- !u!65 &91212953
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91212948}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.20000005, y: 6, z: 4}
+  m_Center: {x: -1.9, y: 2.9999971, z: 0.000030517578}
 --- !u!1 &91351292
 GameObject:
   m_ObjectHideFlags: 0
@@ -4515,6 +4563,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 126891748}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &127582528
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 127582529}
+  m_Layer: 6
+  m_Name: FirePoint (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &127582529
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127582528}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.0011, y: 0.0332, z: 0.0923}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5076068839778171422}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &129946097
 GameObject:
   m_ObjectHideFlags: 0
@@ -5565,6 +5643,81 @@ Transform:
   m_Father: {fileID: 1161955168}
   m_RootOrder: 402
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &154300866
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 154300867}
+  - component: {fileID: 154300869}
+  - component: {fileID: 154300868}
+  m_Layer: 0
+  m_Name: Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &154300867
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154300866}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1953718817}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.000061035, y: 0}
+  m_SizeDelta: {x: 1920, y: 1080}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &154300868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154300866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.1509434, g: 0.1509434, b: 0.1509434, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &154300869
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154300866}
+  m_CullTransparentMesh: 1
 --- !u!1 &156533467
 GameObject:
   m_ObjectHideFlags: 0
@@ -6890,6 +7043,7 @@ GameObject:
   - component: {fileID: 194839458}
   - component: {fileID: 194839457}
   - component: {fileID: 194839459}
+  - component: {fileID: 194839460}
   m_Layer: 0
   m_Name: BossWalk (11)
   m_TagString: Untagged
@@ -6976,6 +7130,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -1.9000001, y: 3.0000002, z: 0}
   m_TimeToStationary: 0.5
+--- !u!65 &194839460
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194839455}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.20000005, y: 6, z: 4}
+  m_Center: {x: -1.9, y: 2.9999971, z: 0.000030517578}
 --- !u!1 &195665998
 GameObject:
   m_ObjectHideFlags: 0
@@ -13821,6 +13988,7 @@ GameObject:
   - component: {fileID: 336977381}
   - component: {fileID: 336977380}
   - component: {fileID: 336977382}
+  - component: {fileID: 336977383}
   m_Layer: 0
   m_Name: BossWalk (28)
   m_TagString: Untagged
@@ -13907,6 +14075,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -1.9000001, y: 3.0000002, z: 0}
   m_TimeToStationary: 0.5
+--- !u!65 &336977383
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336977378}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.20000009, y: 6, z: 4.000001}
+  m_Center: {x: -1.900031, y: 2.9999971, z: -2.7000624e-14}
 --- !u!1 &337646637
 GameObject:
   m_ObjectHideFlags: 0
@@ -15165,6 +15346,7 @@ GameObject:
   - component: {fileID: 361002933}
   - component: {fileID: 361002932}
   - component: {fileID: 361002934}
+  - component: {fileID: 361002935}
   m_Layer: 0
   m_Name: BossWalk (26)
   m_TagString: Untagged
@@ -15251,6 +15433,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -1.9000001, y: 3.0000002, z: 0}
   m_TimeToStationary: 0.5
+--- !u!65 &361002935
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361002930}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.20000009, y: 6, z: 4.000001}
+  m_Center: {x: -1.900031, y: 2.9999971, z: -0.0000038146973}
 --- !u!1 &361024975
 GameObject:
   m_ObjectHideFlags: 0
@@ -15363,6 +15558,101 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -1.5500001, y: 2, z: 0}
   m_TimeToStationary: 0.5
+--- !u!1 &364496928
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 364496929}
+  - component: {fileID: 364496932}
+  - component: {fileID: 364496931}
+  - component: {fileID: 364496930}
+  m_Layer: 0
+  m_Name: LoadingWheel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &364496929
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364496928}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.2206101, y: 2.2206101, z: 2.2206101}
+  m_Children: []
+  m_Father: {fileID: 1953718817}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 84.114075}
+  m_SizeDelta: {x: 100, y: 89.2949}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &364496930
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364496928}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bdf4206305dcbfc42bce48f663e8dd35, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &364496931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364496928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: efb126ac04bcd684fa24e8de59cc55cb, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &364496932
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364496928}
+  m_CullTransparentMesh: 1
 --- !u!1 &371246809
 GameObject:
   m_ObjectHideFlags: 0
@@ -16427,6 +16717,7 @@ GameObject:
   - component: {fileID: 393021204}
   - component: {fileID: 393021203}
   - component: {fileID: 393021205}
+  - component: {fileID: 393021206}
   m_Layer: 0
   m_Name: BossWalk (20)
   m_TagString: Untagged
@@ -16513,6 +16804,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -1.9000001, y: 3.0000002, z: 0}
   m_TimeToStationary: 0.5
+--- !u!65 &393021206
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393021201}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.20000009, y: 6, z: 4.000001}
+  m_Center: {x: -1.900031, y: 2.9999971, z: -0.0000038146973}
 --- !u!1001 &393905917
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17034,6 +17338,7 @@ GameObject:
   - component: {fileID: 403838945}
   - component: {fileID: 403838944}
   - component: {fileID: 403838946}
+  - component: {fileID: 403838947}
   m_Layer: 0
   m_Name: BossWalk (1)
   m_TagString: Untagged
@@ -17120,6 +17425,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -1.9000001, y: 3.0000002, z: 0}
   m_TimeToStationary: 0.5
+--- !u!65 &403838947
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403838942}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.20000005, y: 6, z: 4}
+  m_Center: {x: -1.9, y: 2.9999971, z: 0.000030517578}
 --- !u!1001 &405081361
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23599,6 +23917,8 @@ MonoBehaviour:
   player: {fileID: 5564761507878166693}
   _teleportPositon: {x: 11.11, y: -20.38, z: 93}
   _bossActivation: {fileID: 1888191909}
+  LoadingCanvas: {fileID: 1953718816}
+  _timeLoading: 3
 --- !u!65 &594895394
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25871,6 +26191,8 @@ MonoBehaviour:
   player: {fileID: 5564761507878166693}
   _teleportPositon: {x: 79.82385, y: -1.27, z: 683.8157}
   _bossActivation: {fileID: 7488940900813533774}
+  LoadingCanvas: {fileID: 1953718816}
+  _timeLoading: 3
 --- !u!65 &673189027
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30237,6 +30559,7 @@ GameObject:
   - component: {fileID: 765991341}
   - component: {fileID: 765991340}
   - component: {fileID: 765991342}
+  - component: {fileID: 765991343}
   m_Layer: 0
   m_Name: BossWalk (27)
   m_TagString: Untagged
@@ -30323,6 +30646,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -1.9000001, y: 3.0000002, z: 0}
   m_TimeToStationary: 0.5
+--- !u!65 &765991343
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765991338}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.20000009, y: 6, z: 4.000001}
+  m_Center: {x: -1.900031, y: 2.9999971, z: -2.7000624e-14}
 --- !u!1 &767483791
 GameObject:
   m_ObjectHideFlags: 0
@@ -30867,6 +31203,7 @@ GameObject:
   - component: {fileID: 778458998}
   - component: {fileID: 778458997}
   - component: {fileID: 778458999}
+  - component: {fileID: 778459000}
   m_Layer: 0
   m_Name: BossWalk (29)
   m_TagString: Untagged
@@ -30953,6 +31290,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -1.9000001, y: 3.0000002, z: 0}
   m_TimeToStationary: 0.5
+--- !u!65 &778459000
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778458995}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.20000009, y: 6, z: 4.000001}
+  m_Center: {x: -1.900031, y: 2.9999971, z: 0.0000038146973}
 --- !u!1 &780886382
 GameObject:
   m_ObjectHideFlags: 0
@@ -34206,6 +34556,7 @@ GameObject:
   - component: {fileID: 902316276}
   - component: {fileID: 902316275}
   - component: {fileID: 902316277}
+  - component: {fileID: 902316278}
   m_Layer: 0
   m_Name: BossWalk (12)
   m_TagString: Untagged
@@ -34292,6 +34643,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -1.9000001, y: 3.0000002, z: 0}
   m_TimeToStationary: 0.5
+--- !u!65 &902316278
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 902316273}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.20000005, y: 6, z: 4}
+  m_Center: {x: -1.9, y: 2.9999971, z: 0.000030517578}
 --- !u!1 &903024394
 GameObject:
   m_ObjectHideFlags: 0
@@ -34709,6 +35073,8 @@ MonoBehaviour:
   player: {fileID: 5564761507878166693}
   _teleportPositon: {x: 74.46, y: -1.67, z: 364.37}
   _bossActivation: {fileID: 1888191909}
+  LoadingCanvas: {fileID: 1953718816}
+  _timeLoading: 3
 --- !u!65 &920702500
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -36299,6 +36665,7 @@ GameObject:
   - component: {fileID: 983096436}
   - component: {fileID: 983096435}
   - component: {fileID: 983096437}
+  - component: {fileID: 983096438}
   m_Layer: 0
   m_Name: BossWalk (24)
   m_TagString: Untagged
@@ -36385,6 +36752,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -1.9000001, y: 3.0000002, z: 0}
   m_TimeToStationary: 0.5
+--- !u!65 &983096438
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983096433}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.20000009, y: 6, z: 4.000001}
+  m_Center: {x: -1.900031, y: 2.9999971, z: -2.7000624e-14}
 --- !u!1 &985359043
 GameObject:
   m_ObjectHideFlags: 0
@@ -36573,6 +36953,7 @@ GameObject:
   - component: {fileID: 989457987}
   - component: {fileID: 989457986}
   - component: {fileID: 989457988}
+  - component: {fileID: 989457989}
   m_Layer: 0
   m_Name: BossWalk (7)
   m_TagString: Untagged
@@ -36659,6 +37040,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -1.9000001, y: 3.0000002, z: 0}
   m_TimeToStationary: 0.5
+--- !u!65 &989457989
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 989457984}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.20000005, y: 6, z: 4}
+  m_Center: {x: -1.9, y: 2.9999971, z: 0.000030517578}
 --- !u!1 &990483639
 GameObject:
   m_ObjectHideFlags: 0
@@ -39199,6 +39593,85 @@ Transform:
   m_Father: {fileID: 736061691}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1049844716
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1049844717}
+  - component: {fileID: 1049844719}
+  - component: {fileID: 1049844718}
+  m_Layer: 0
+  m_Name: LoadingText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1049844717
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049844716}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1953718817}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.000061035, y: -122}
+  m_SizeDelta: {x: 424.1323, y: 196.4033}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1049844718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049844716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.7176471, g: 0.5529412, b: 0.011764707, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 79ab6303e25ae8a4398b5d10f069a129, type: 3}
+    m_FontSize: 57
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 57
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Loading...
+--- !u!222 &1049844719
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049844716}
+  m_CullTransparentMesh: 1
 --- !u!64 &1052511956
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -46724,6 +47197,7 @@ GameObject:
   - component: {fileID: 1208228838}
   - component: {fileID: 1208228837}
   - component: {fileID: 1208228839}
+  - component: {fileID: 1208228840}
   m_Layer: 0
   m_Name: BossWalk (3)
   m_TagString: Untagged
@@ -46810,6 +47284,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -1.9000001, y: 3.0000002, z: 0}
   m_TimeToStationary: 0.5
+--- !u!65 &1208228840
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208228835}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.20000005, y: 6, z: 4}
+  m_Center: {x: -1.9, y: 2.9999971, z: 0.000030517578}
 --- !u!1 &1208267646
 GameObject:
   m_ObjectHideFlags: 0
@@ -47332,6 +47819,7 @@ GameObject:
   - component: {fileID: 1220712431}
   - component: {fileID: 1220712430}
   - component: {fileID: 1220712432}
+  - component: {fileID: 1220712433}
   m_Layer: 0
   m_Name: BossWalk (19)
   m_TagString: Untagged
@@ -47418,6 +47906,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -1.9000001, y: 3.0000002, z: 0}
   m_TimeToStationary: 0.5
+--- !u!65 &1220712433
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1220712428}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.20000009, y: 6, z: 4.000001}
+  m_Center: {x: -1.900031, y: 2.9999971, z: -2.7000624e-14}
 --- !u!1 &1220816613
 GameObject:
   m_ObjectHideFlags: 0
@@ -49942,6 +50443,7 @@ GameObject:
   - component: {fileID: 1278444988}
   - component: {fileID: 1278444987}
   - component: {fileID: 1278444989}
+  - component: {fileID: 1278444990}
   m_Layer: 0
   m_Name: BossWalk (2)
   m_TagString: Untagged
@@ -50028,6 +50530,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -1.9000001, y: 3.0000002, z: 0}
   m_TimeToStationary: 0.5
+--- !u!65 &1278444990
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278444985}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.20000005, y: 6, z: 4}
+  m_Center: {x: -1.9, y: 2.9999971, z: 0.000030517578}
 --- !u!1001 &1282818757
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51594,6 +52109,7 @@ GameObject:
   - component: {fileID: 1323233422}
   - component: {fileID: 1323233421}
   - component: {fileID: 1323233423}
+  - component: {fileID: 1323233424}
   m_Layer: 0
   m_Name: BossWalk (4)
   m_TagString: Untagged
@@ -51680,6 +52196,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -1.9000001, y: 3.0000002, z: 0}
   m_TimeToStationary: 0.5
+--- !u!65 &1323233424
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323233419}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.20000005, y: 6, z: 4}
+  m_Center: {x: -1.9, y: 2.9999971, z: 0.000030517578}
 --- !u!1 &1324149869
 GameObject:
   m_ObjectHideFlags: 0
@@ -55084,6 +55613,7 @@ GameObject:
   - component: {fileID: 1414228435}
   - component: {fileID: 1414228434}
   - component: {fileID: 1414228436}
+  - component: {fileID: 1414228437}
   m_Layer: 0
   m_Name: BossWalk (17)
   m_TagString: Untagged
@@ -55170,6 +55700,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -1.9000001, y: 3.0000002, z: 0}
   m_TimeToStationary: 0.5
+--- !u!65 &1414228437
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414228432}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.20000009, y: 6, z: 4.000001}
+  m_Center: {x: -1.900031, y: 2.9999971, z: 0.0000038146973}
 --- !u!33 &1415494548
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -56305,6 +56848,7 @@ GameObject:
   - component: {fileID: 1454314233}
   - component: {fileID: 1454314232}
   - component: {fileID: 1454314234}
+  - component: {fileID: 1454314235}
   m_Layer: 0
   m_Name: BossWalk (13)
   m_TagString: Untagged
@@ -56391,6 +56935,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -1.9000001, y: 3.0000002, z: 0}
   m_TimeToStationary: 0.5
+--- !u!65 &1454314235
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1454314230}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.20000005, y: 6, z: 4}
+  m_Center: {x: -1.9, y: 2.9999971, z: 0.000030517578}
 --- !u!1 &1455116822
 GameObject:
   m_ObjectHideFlags: 0
@@ -56403,6 +56960,7 @@ GameObject:
   - component: {fileID: 1455116825}
   - component: {fileID: 1455116824}
   - component: {fileID: 1455116826}
+  - component: {fileID: 1455116827}
   m_Layer: 0
   m_Name: BossWalk (22)
   m_TagString: Untagged
@@ -56489,6 +57047,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -1.9000001, y: 3.0000002, z: 0}
   m_TimeToStationary: 0.5
+--- !u!65 &1455116827
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455116822}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.20000009, y: 6, z: 4.000001}
+  m_Center: {x: -1.900031, y: 2.9999971, z: -0.0000038146973}
 --- !u!1 &1459130161
 GameObject:
   m_ObjectHideFlags: 0
@@ -58351,7 +58922,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6229530416486896484}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -60507,6 +61078,7 @@ GameObject:
   - component: {fileID: 1588417313}
   - component: {fileID: 1588417312}
   - component: {fileID: 1588417314}
+  - component: {fileID: 1588417315}
   m_Layer: 0
   m_Name: BossWalk (8)
   m_TagString: Untagged
@@ -60593,6 +61165,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -1.9000001, y: 3.0000002, z: 0}
   m_TimeToStationary: 0.5
+--- !u!65 &1588417315
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588417310}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.20000005, y: 6, z: 4}
+  m_Center: {x: -1.9, y: 2.9999971, z: 0.000030517578}
 --- !u!1 &1594914533
 GameObject:
   m_ObjectHideFlags: 0
@@ -62048,6 +62633,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1161955168}
   m_RootOrder: 395
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1620479949
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1620479950}
+  m_Layer: 10
+  m_Name: FirePosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1620479950
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620479949}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.627, z: 0.61}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7488940900813533777}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1623176021
 GameObject:
@@ -67076,6 +67691,7 @@ GameObject:
   - component: {fileID: 1733100644}
   - component: {fileID: 1733100643}
   - component: {fileID: 1733100645}
+  - component: {fileID: 1733100646}
   m_Layer: 0
   m_Name: BossWalk (6)
   m_TagString: Untagged
@@ -67162,6 +67778,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -1.9000001, y: 3.0000002, z: 0}
   m_TimeToStationary: 0.5
+--- !u!65 &1733100646
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733100641}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.20000005, y: 6, z: 4}
+  m_Center: {x: -1.9, y: 2.9999971, z: 0.000030517578}
 --- !u!1 &1733186009
 GameObject:
   m_ObjectHideFlags: 0
@@ -68380,6 +69009,7 @@ GameObject:
   - component: {fileID: 1763663169}
   - component: {fileID: 1763663168}
   - component: {fileID: 1763663170}
+  - component: {fileID: 1763663171}
   m_Layer: 0
   m_Name: BossWalk (9)
   m_TagString: Untagged
@@ -68466,6 +69096,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -1.9000001, y: 3.0000002, z: 0}
   m_TimeToStationary: 0.5
+--- !u!65 &1763663171
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763663166}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.20000005, y: 6, z: 4}
+  m_Center: {x: -1.8999923, y: 2.9999971, z: 0.000030517578}
 --- !u!1 &1764526973
 GameObject:
   m_ObjectHideFlags: 0
@@ -70629,6 +71272,7 @@ GameObject:
   - component: {fileID: 1807368093}
   - component: {fileID: 1807368092}
   - component: {fileID: 1807368094}
+  - component: {fileID: 1807368095}
   m_Layer: 0
   m_Name: BossWalk (23)
   m_TagString: Untagged
@@ -70715,6 +71359,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -1.9000001, y: 3.0000002, z: 0}
   m_TimeToStationary: 0.5
+--- !u!65 &1807368095
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807368090}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.20000009, y: 6, z: 4.000001}
+  m_Center: {x: -1.900031, y: 2.9999971, z: -2.7000624e-14}
 --- !u!64 &1809692949
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -76644,6 +77301,7 @@ GameObject:
   - component: {fileID: 1935934801}
   - component: {fileID: 1935934800}
   - component: {fileID: 1935934802}
+  - component: {fileID: 1935934803}
   m_Layer: 0
   m_Name: BossWalk (10)
   m_TagString: Untagged
@@ -76730,6 +77388,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -1.9000001, y: 3.0000002, z: 0}
   m_TimeToStationary: 0.5
+--- !u!65 &1935934803
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935934798}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.20000005, y: 6, z: 4}
+  m_Center: {x: -1.9, y: 2.9999971, z: 0.000030517578}
 --- !u!64 &1940676477
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -77195,6 +77866,108 @@ Transform:
   m_Father: {fileID: 568430096}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1953718816
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1953718817}
+  - component: {fileID: 1953718820}
+  - component: {fileID: 1953718819}
+  - component: {fileID: 1953718818}
+  m_Layer: 0
+  m_Name: LoadingCanvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1953718817
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953718816}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 154300867}
+  - {fileID: 364496929}
+  - {fileID: 1049844717}
+  m_Father: {fileID: 5121470409909117969}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
+--- !u!114 &1953718818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953718816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &1953718819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953718816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!223 &1953718820
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953718816}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 3
+  m_TargetDisplay: 0
 --- !u!1 &1954189801
 GameObject:
   m_ObjectHideFlags: 0
@@ -80753,6 +81526,7 @@ GameObject:
   - component: {fileID: 2047037297}
   - component: {fileID: 2047037296}
   - component: {fileID: 2047037298}
+  - component: {fileID: 2047037299}
   m_Layer: 0
   m_Name: BossWalk (18)
   m_TagString: Untagged
@@ -80839,6 +81613,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -1.9000001, y: 3.0000002, z: 0}
   m_TimeToStationary: 0.5
+--- !u!65 &2047037299
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047037294}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.20000009, y: 6, z: 4.000001}
+  m_Center: {x: -1.900031, y: 2.9999971, z: -2.7000624e-14}
 --- !u!1 &2047892106
 GameObject:
   m_ObjectHideFlags: 0
@@ -81002,6 +81789,7 @@ GameObject:
   - component: {fileID: 2051310969}
   - component: {fileID: 2051310968}
   - component: {fileID: 2051310970}
+  - component: {fileID: 2051310971}
   m_Layer: 0
   m_Name: BossWalk (5)
   m_TagString: Untagged
@@ -81088,6 +81876,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -1.9000001, y: 3.0000002, z: 0}
   m_TimeToStationary: 0.5
+--- !u!65 &2051310971
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2051310966}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.20000005, y: 6, z: 4}
+  m_Center: {x: -1.9, y: 2.9999971, z: 0.000030517578}
 --- !u!1 &2051466593
 GameObject:
   m_ObjectHideFlags: 0
@@ -81642,6 +82443,7 @@ GameObject:
   - component: {fileID: 2064776080}
   - component: {fileID: 2064776079}
   - component: {fileID: 2064776081}
+  - component: {fileID: 2064776082}
   m_Layer: 0
   m_Name: BossWalk (15)
   m_TagString: Untagged
@@ -81728,6 +82530,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -1.9000001, y: 3.0000002, z: 0}
   m_TimeToStationary: 0.5
+--- !u!65 &2064776082
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064776077}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.20000005, y: 6, z: 4}
+  m_Center: {x: -1.9, y: 2.9999971, z: 0.000030517578}
 --- !u!64 &2064861228
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -83188,6 +84003,7 @@ GameObject:
   - component: {fileID: 2106444089}
   - component: {fileID: 2106444088}
   - component: {fileID: 2106444090}
+  - component: {fileID: 2106444091}
   m_Layer: 0
   m_Name: BossWalk (21)
   m_TagString: Untagged
@@ -83274,6 +84090,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -1.9000001, y: 3.0000002, z: 0}
   m_TimeToStationary: 0.5
+--- !u!65 &2106444091
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2106444086}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.20000009, y: 6, z: 4.000001}
+  m_Center: {x: -1.900031, y: 2.9999971, z: -2.7000624e-14}
 --- !u!1 &2107218384
 GameObject:
   m_ObjectHideFlags: 0
@@ -83286,6 +84115,7 @@ GameObject:
   - component: {fileID: 2107218387}
   - component: {fileID: 2107218386}
   - component: {fileID: 2107218388}
+  - component: {fileID: 2107218389}
   m_Layer: 0
   m_Name: BossWalk (16)
   m_TagString: Untagged
@@ -83372,6 +84202,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -1.9000001, y: 3.0000002, z: 0}
   m_TimeToStationary: 0.5
+--- !u!65 &2107218389
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107218384}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.20000009, y: 6, z: 4.000001}
+  m_Center: {x: -1.900031, y: 2.9999971, z: -0.0000038146973}
 --- !u!1 &2116771730
 GameObject:
   m_ObjectHideFlags: 0
@@ -92576,6 +93419,14 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!33 &2021197272210440134
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5363149542162912695}
+  m_Mesh: {fileID: -2432090755550338912, guid: fe9629c08c1c8654eb55ed1bde0c931a, type: 3}
 --- !u!4 &2023014549193929994
 Transform:
   m_ObjectHideFlags: 0
@@ -92798,8 +93649,10 @@ MonoBehaviour:
   _batPrefab: {fileID: 4348597667350485830, guid: e2174f2f2db56fe42a4fc78cd87dfb3a, type: 3}
   _BossRoomTeleporter: {fileID: 673189025}
   _playerSpawn: {x: 74.46, y: -1.67, z: 364.37}
+  _bossPlayerSpawn: {x: 79.82385, y: -1.27, z: 683.8157}
   player: {fileID: 5564761507878166693}
   DeathUI: {fileID: 5121470409028309710}
+  _bossActivation: {fileID: 0}
 --- !u!4 &2326370206398404667
 Transform:
   m_ObjectHideFlags: 0
@@ -92862,7 +93715,6 @@ MonoBehaviour:
   VideoUI: {fileID: 0}
   PauseUI: {fileID: 5121470408441279772}
   DeathUI: {fileID: 5121470409028309710}
-  _mouseActive: 0
 --- !u!1 &2326370206954400545
 GameObject:
   m_ObjectHideFlags: 0
@@ -94315,6 +95167,47 @@ Transform:
   m_Father: {fileID: 2633084229947983197}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &3254138891970829138
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5363149542162912695}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: e48a9b4e9e25de349a0b175b94e6c226, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!4 &3282866626088253976
 Transform:
   m_ObjectHideFlags: 0
@@ -94794,6 +95687,20 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2432090755550338912, guid: d73d44e6500b37d4eb95e3ebb06515e4, type: 3}
+--- !u!4 &3808799991405037196
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5363149542162912695}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.049299, y: 0.023378, z: -0.34811}
+  m_LocalScale: {x: 0.5353188, y: 0.53586, z: 0.53586}
+  m_Children: []
+  m_Father: {fileID: 4371771873562228692}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &3815722340666275421
 Transform:
   m_ObjectHideFlags: 0
@@ -94881,6 +95788,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &4026349972294741358
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4371771873562228692}
+  m_Layer: 0
+  m_Name: DangerZone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
 --- !u!4 &4027212042329134716
 Transform:
   m_ObjectHideFlags: 0
@@ -95230,6 +96153,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3815722340666275421}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4371771873562228692
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4026349972294741358}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.005, y: 0.0022, z: 0.0599}
+  m_LocalScale: {x: 0.07685041, y: 0.000041513053, z: 0.07685041}
+  m_Children:
+  - {fileID: 3808799991405037196}
+  m_Father: {fileID: 5076068839778171422}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4374167787628248344
 MeshFilter:
@@ -95726,12 +96664,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5564761507878166692}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20.3, y: 0.006, z: -15.72}
+  m_LocalPosition: {x: 87.6, y: 18.68, z: 401.1}
   m_LocalScale: {x: 68.78744, y: 68.78744, z: 68.78744}
   m_Children:
   - {fileID: 730009181224327818}
   - {fileID: 3763063420888306384}
   - {fileID: 1333231962}
+  - {fileID: 88303047}
+  - {fileID: 4371771873562228692}
+  - {fileID: 127582529}
   m_Father: {fileID: 6229530418233767616}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -96729,6 +97670,7 @@ Transform:
   - {fileID: 5121470408441279776}
   - {fileID: 5121470409028309714}
   - {fileID: 1748498444}
+  - {fileID: 1953718817}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -96762,6 +97704,7 @@ GameObject:
   - component: {fileID: 1241849801550661248}
   - component: {fileID: 2314381754430005780}
   - component: {fileID: 5141685749995613426}
+  - component: {fileID: 5141685749995613427}
   m_Layer: 0
   m_Name: BossWalk
   m_TagString: Untagged
@@ -96785,6 +97728,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -1.9000001, y: 3.0000002, z: 0}
   m_TimeToStationary: 0.5
+--- !u!65 &5141685749995613427
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5141685749995613425}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.20000005, y: 6, z: 4}
+  m_Center: {x: -1.9, y: 2.9999971, z: 0.000030517578}
 --- !u!33 &5237421881050228686
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -96853,6 +97809,24 @@ GameObject:
   - component: {fileID: 2106145266660978218}
   m_Layer: 0
   m_Name: unamed
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &5363149542162912695
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3808799991405037196}
+  - component: {fileID: 2021197272210440134}
+  - component: {fileID: 3254138891970829138}
+  m_Layer: 0
+  m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97060,9 +98034,10 @@ MonoBehaviour:
   _canAttack: 1
   _meleeAttackRate: 1
   _meleeAttackRange: 4
+  DamageArea: {fileID: 4026349972294741358}
   myWeapon: 0
   ExplosiveBoxPrefab: {fileID: 6013697473254382886, guid: 604ff632cc699454292c0716c21e5569, type: 3}
-  _ammountOfExplosiveBoxes: 0
+  _ammountOfExplosiveBoxes: 4
   _boomBoxItem: {fileID: 11400000, guid: 15e1f9c3d075df247b184ccd33e3b3a3, type: 2}
   _SuperFirePrefab: {fileID: 1733063891095796255, guid: d5dbcc5bbb9420a439c25f9540a0b9ab, type: 3}
   _ammountOfEnergyCannons: 0
@@ -97590,7 +98565,6 @@ RectTransform:
   - {fileID: 6229530417011979595}
   - {fileID: 6229530418312369295}
   - {fileID: 6229530418281374981}
-  - {fileID: 43339702}
   - {fileID: 1509941469}
   m_Father: {fileID: 6229530418233767616}
   m_RootOrder: 2
@@ -97890,8 +98864,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6229530416908967593}
-  m_LocalRotation: {x: 0.25100258, y: 0.3606186, z: -0.10141161, w: 0.8925624}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.2510026, y: 0.36061868, z: -0.101411656, w: 0.8925624}
+  m_LocalPosition: {x: -0.0000076293945, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6229530418431155367}
@@ -98027,8 +99001,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6229530417297921432}
-  m_LocalRotation: {x: 0.27516168, y: 0.35773003, z: -0.111172535, w: 0.88541293}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.27516174, y: 0.35773012, z: -0.1111726, w: 0.8854128}
+  m_LocalPosition: {x: -0.000015258789, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6229530417871218125}
@@ -98102,7 +99076,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6229530417450543016}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -37.131573, y: 16.676, z: -33.149605}
+  m_LocalPosition: {x: 70.768425, y: 35.35, z: 383.6704}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6229530417297921434}
@@ -98727,8 +99701,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6229530417897648654}
-  m_LocalRotation: {x: 0.2630975, y: 0.35920852, z: -0.10629826, w: 0.88907236}
-  m_LocalPosition: {x: -37.131573, y: 16.676, z: -33.149605}
+  m_LocalRotation: {x: 0.26309758, y: 0.3592087, z: -0.10629835, w: 0.8890723}
+  m_LocalPosition: {x: 70.768425, y: 35.35, z: 383.6704}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6229530418233767616}
@@ -99341,8 +100315,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6229530418435547389}
-  m_LocalRotation: {x: 0.2630975, y: 0.35920852, z: -0.10629827, w: 0.88907236}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.26309755, y: 0.35920864, z: -0.106298365, w: 0.8890723}
+  m_LocalPosition: {x: -0.0000076293945, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6229530416476369574}
@@ -100835,16 +101809,17 @@ MonoBehaviour:
   _baseMovementSpeed: 0
   _hp: 1000
   enemyHpImage: {fileID: 0}
+  FirePosition: {fileID: 1620479950}
   _canAttack: 0
   _rockAttackRange: 100
   _fireAgainTimer: 0
-  _fireCooldown: 2
+  _fireCooldown: 4
   _rockPrefab: {fileID: 1579653318887613449, guid: fd1c7d04231edae43b92ce5e5b464d45, type: 3}
   _rangeToFindPlayer: 30
   _AmmoutOfRockThrowed: 0
   _LazerPrefab: {fileID: 1722493272026117017, guid: 492cc3a3471ba7346a1f242594a0f69e, type: 3}
   _changeAttack: 0
-  _lazerBeamAmmount: 30
+  _lazerBeamAmmount: 20
   _timesToFireTillChangeAttack: 5
   _position1: {fileID: 7488940900721022927}
   _position2: {fileID: 7488940901478463174}
@@ -100865,6 +101840,7 @@ Transform:
   - {fileID: 7488940900127651561}
   - {fileID: 7488940900721022927}
   - {fileID: 7488940901478463174}
+  - {fileID: 1620479950}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

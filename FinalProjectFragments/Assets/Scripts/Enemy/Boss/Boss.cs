@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class Boss : EnemyBrain, IPlayerDamageable
 {
+    [SerializeField] Transform FirePosition;
+
     [Header("RockAttack")]
     [SerializeField] bool _canAttack = false;
     [SerializeField] float _rockAttackRange;
@@ -27,6 +29,7 @@ public class Boss : EnemyBrain, IPlayerDamageable
 
 
     NavMeshAgent _agent;
+    Renderer _renderer;
 
     protected override void Update()
     {
@@ -40,7 +43,7 @@ public class Boss : EnemyBrain, IPlayerDamageable
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
-
+        _renderer = GetComponent<Renderer>();
         _agent.speed = _movementSpeed;
 
 
@@ -91,7 +94,7 @@ public class Boss : EnemyBrain, IPlayerDamageable
         if (_fireAgainTimer >= _fireCooldown && _canAttack == true && _changeAttack == false)
         {
             _AmmoutOfRockThrowed++;
-           GameObject bullet = Instantiate(_rockPrefab, transform.position, transform.localRotation);
+           GameObject bullet = Instantiate(_rockPrefab, FirePosition.transform.position, transform.localRotation);
             BossFire1 fire = bullet.GetComponent<BossFire1>();
             fire.FireMove(target.position - bullet.transform.position);
             Destroy(bullet, 4f);
@@ -119,7 +122,7 @@ public class Boss : EnemyBrain, IPlayerDamageable
     {
         for (int i = 0; i < _lazerBeamAmmount; i++)
         {
-            GameObject bullet = Instantiate(_LazerPrefab, transform.position, transform.localRotation);
+            GameObject bullet = Instantiate(_LazerPrefab, FirePosition.transform.position, transform.localRotation);
             BossFire1 fire = bullet.GetComponent<BossFire1>();
             fire.FireMove(target.position - bullet.transform.position);
             Destroy(bullet, 4f);
@@ -146,8 +149,18 @@ public class Boss : EnemyBrain, IPlayerDamageable
 
     public void TakeDamage(float DamageToTake)
     {
+        
         UIManager.instance.UpdateBossHp(_hp);
         _hp = _hp - DamageToTake;
+        StartCoroutine(ChangeColor());
         Die();
+    }
+    IEnumerator ChangeColor()
+    {
+        _renderer.material.color = Color.red;
+
+        yield return new WaitForSeconds(0.25f);
+
+        _renderer.material.color = Color.white;
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class BatEnemy : EnemyBrain, IPlayerDamageable
 {
     NavMeshAgent _agent;
+    Renderer _renderer;
 
     [Header("Attack")]
     [SerializeField] bool _canAttack;
@@ -22,6 +23,7 @@ public class BatEnemy : EnemyBrain, IPlayerDamageable
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
+        _renderer = GetComponent<Renderer>();
 
         _itemDropChance = Random.Range(0, 20);
 
@@ -53,6 +55,7 @@ public class BatEnemy : EnemyBrain, IPlayerDamageable
     {
 
         _hp = _hp - DamageToTake;
+        StartCoroutine(ChangeColor());
         Die();
         UpdateEnemyHP(_hp);
     }
@@ -120,6 +123,14 @@ public class BatEnemy : EnemyBrain, IPlayerDamageable
         {
             Instantiate(_healingPrefab, transform.position, transform.rotation);
         }
+    }
+    IEnumerator ChangeColor()
+    {
+        _renderer.material.color = Color.red;
+
+        yield return new WaitForSeconds(0.25f);
+
+        _renderer.material.color = Color.white;
     }
 }
 

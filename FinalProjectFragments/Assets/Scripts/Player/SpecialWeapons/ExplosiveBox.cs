@@ -9,6 +9,9 @@ public class ExplosiveBox : MonoBehaviour
     [SerializeField] float _explosionRange;
     [SerializeField] float _timeToExplode;
 
+    [SerializeField] GameObject ExplosionDistance;
+
+
     private void Start()
     {
         Explosion();
@@ -22,7 +25,9 @@ public class ExplosiveBox : MonoBehaviour
 
     IEnumerator ExplosionTimer()
     {
+        ExplosionDistance.SetActive(true);
         yield return new WaitForSeconds(_timeToExplode);
+        ExplosionDistance.SetActive(false);
 
         Collider[] hitColliders = new Collider[100];
 

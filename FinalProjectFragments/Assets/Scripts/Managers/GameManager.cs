@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Respawn")]
     [SerializeField] Vector3 _playerSpawn;
+    [SerializeField] Vector3 _bossPlayerSpawn;
 
     [Header("Reference")]
     [SerializeField] PlayerCharacter player;
@@ -24,7 +25,14 @@ public class GameManager : MonoBehaviour
     [Header("DeathMensage")]
     [SerializeField] GameObject DeathUI;
 
+    [Header("Boss")]
+    [SerializeField] GameObject _bossActivation;
+    bool _isOnBossStage = false;
+
+
     public static GameManager instance;
+
+    public bool IsOnBossStage { get => _isOnBossStage; set => _isOnBossStage = value; }
 
     private void Awake()
     {
@@ -94,6 +102,10 @@ public class GameManager : MonoBehaviour
 
     public void Respawn()
     {
+        if (IsOnBossStage == true)
+        {
+            _playerSpawn = _bossPlayerSpawn;
+        }
         DeathUI.SetActive(false);
         player.transform.position = _playerSpawn;
         player.gameObject.SetActive(true);
@@ -101,5 +113,6 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
         player.Hp = 100;
         UIManager.instance.UpdateHp(player.Hp);
+        
     }
 }

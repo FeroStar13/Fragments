@@ -307,7 +307,7 @@ Transform:
   - {fileID: 6586015524257692599}
   - {fileID: 7317032389689982747}
   m_Father: {fileID: 3293249716946185244}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2808040031045547686
 GameObject:
@@ -340,8 +340,8 @@ Transform:
   m_LocalPosition: {x: 74.63, y: -1.671, z: 392.94}
   m_LocalScale: {x: 72.71548, y: 72.71548, z: 72.71548}
   m_Children:
-  - {fileID: 7053670454127873160}
   - {fileID: 6916190518666052818}
+  - {fileID: 7053670454127873160}
   - {fileID: 8000221949028476819}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -412,6 +412,7 @@ MonoBehaviour:
   _crystalDropPrefab: {fileID: 2031371663555871547, guid: 043b79b1096e26e4fa93dd39cd1dbf32, type: 3}
   _ironDropPrefab: {fileID: 4265590163354555427, guid: 8dbe9d218d6c8164b885bae85acc016d, type: 3}
   _itemDropChance: 0
+  isDead: 0
 --- !u!136 &7524460446337759847
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -821,11 +822,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7198700916008831720}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3293249716946185244}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &3964231588034142784
 SkinnedMeshRenderer:
