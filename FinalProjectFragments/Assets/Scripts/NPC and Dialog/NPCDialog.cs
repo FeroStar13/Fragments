@@ -37,6 +37,15 @@ public class NPCDialog : MonoBehaviour, IInteractable
             }
             UIManager.instance.DialogOnScrene(myDialogTree.Dialogs[positionInDialog], myDialogTree.MyDialogColor,  myDialogTree.MyFont);
             UIManager.instance.nameDialogOnScrene(myDialogTree.Name, myDialogTree.MyFont, myDialogTree.MyNameColor);
-        
+
+        StartCoroutine(DisableDialogInTime());
+
+    }
+
+    IEnumerator DisableDialogInTime()
+    {
+        yield return new WaitForSeconds(5);
+        dialogBackGround.gameObject.SetActive(false);
+        positionInDialog = 0;
     }
 }

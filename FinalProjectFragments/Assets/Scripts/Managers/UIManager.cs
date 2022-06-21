@@ -20,7 +20,7 @@ public class UIManager : MonoBehaviour
 
     [Header("Inventory")]
     [SerializeField] GameObject Inventory;
-   [SerializeField] bool _canOpenInventory;
+   [SerializeField] bool _canOpenInventory = true;
     [SerializeField] GameObject InventoryBackground;
     [SerializeField] GameObject CraftingBackground;
     [SerializeField] bool _inventoryIsOpen = false;
@@ -73,10 +73,12 @@ public class UIManager : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && _inventoryIsOpen == false)
         {
            
                 Pause();
+            
+             
             
         }
 
@@ -132,27 +134,25 @@ public class UIManager : MonoBehaviour
 
     void OpenInventory()
     {
-        if (Input.GetKeyDown(KeyCode.I) && _inventoryIsOpen == false )
+        if (Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.Tab) && _inventoryIsOpen == false )
         {
             _inventoryIsOpen = true;
             player.CanFire = false;
             _gameEsc = false;
-          
             Inventory.SetActive(_inventoryIsOpen);
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
-
             return;
 
         }
-        if(Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.Escape) && _inventoryIsOpen == true)
+        if(Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Tab) && _inventoryIsOpen == true)
         {
             _inventoryIsOpen = false;
             player.CanFire = true;
             _gameEsc = true;
          
             Inventory.SetActive(_inventoryIsOpen);
-            Cursor.lockState = CursorLockMode.Confined  ;
+            Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = false;
             return;
         }

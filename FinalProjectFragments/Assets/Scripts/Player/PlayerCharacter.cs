@@ -375,26 +375,10 @@ public class PlayerCharacter : MonoBehaviour, IDamageable, ICollectable, IHealea
     }
     void ChangeWeapon()
     {
-        if(Input.GetKeyDown(KeyCode.RightArrow))
+        if(Input.GetKeyDown(KeyCode.LeftControl))
        
-        {
             myWeapon++;
-            if ((int)myWeapon < 0)
-            {
-                myWeapon = SpecialWeapons.ExplosiveBox;
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-
-        {
-            myWeapon--;
-            if ((int)myWeapon > 0)
-            {
-                myWeapon = SpecialWeapons.EnergyCanon;
-            }
-        }
-
+        
         if (myWeapon == SpecialWeapons.ExplosiveBox)
         {
             UIManager.instance.isExplosiveBox();
@@ -402,6 +386,11 @@ public class PlayerCharacter : MonoBehaviour, IDamageable, ICollectable, IHealea
         if (myWeapon == SpecialWeapons.EnergyCanon)
         {
             UIManager.instance.isSuperCannon();
+        }
+
+        if((int)myWeapon >= 2)
+        {
+            myWeapon = 0;
         }
     }
 
