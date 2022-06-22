@@ -9,7 +9,6 @@ public class Boss : EnemyBrain, IPlayerDamageable
 
     [Header("RockAttack")]
     [SerializeField] bool _canAttack = false;
-    [SerializeField] float _rockAttackRange;
     [SerializeField] float _fireAgainTimer;
     [SerializeField] float _fireCooldown;
     [SerializeField] GameObject _rockPrefab; 
@@ -33,6 +32,7 @@ public class Boss : EnemyBrain, IPlayerDamageable
 
     NavMeshAgent _agent;
     Renderer _renderer;
+    Animator _animator;
 
     protected override void Update()
     {
@@ -47,6 +47,7 @@ public class Boss : EnemyBrain, IPlayerDamageable
     {
         _agent = GetComponent<NavMeshAgent>();
         _renderer = GetComponentInChildren<Renderer>();
+        _animator = GetComponentInChildren<Animator>();
         _agent.speed = _movementSpeed;
 
 
@@ -96,6 +97,7 @@ public class Boss : EnemyBrain, IPlayerDamageable
 
         if (_fireAgainTimer >= _fireCooldown && _canAttack == true && _changeAttack == false)
         {
+            _animator.SetTrigger("Fire");
             _AmmoutOfRockThrowed++;
            GameObject bullet = Instantiate(_rockPrefab, FirePosition.transform.position, transform.localRotation);
             BossFire1 fire = bullet.GetComponent<BossFire1>();
