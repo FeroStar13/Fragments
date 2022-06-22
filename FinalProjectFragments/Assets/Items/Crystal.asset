@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Crystal
   m_EditorClassIdentifier: 
   itemName: Crystal
-  Icon: {fileID: 21300000, guid: e3f2aec995bcc7240a246139df2b46b1, type: 3}
+  Icon: {fileID: 21300000, guid: 5928813f6356d3b458ae6fdc97b1d59b, type: 3}
   ammount: 0

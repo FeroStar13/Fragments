@@ -184,15 +184,13 @@ public class PlayerCharacter : MonoBehaviour, IDamageable, ICollectable, IHealea
 
     void Running()
     {
-        animator.SetFloat("Run", _rigidBody.velocity.magnitude);
-        animator.SetBool("IsRunning", true);
-        if(PlayerStamina <= 5)
+        if(PlayerStamina <= 5 || !(Input.GetKey(KeyCode.LeftShift)))
         {
             animator.SetBool("IsRunning", false);
         }
         if (Input.GetKey(KeyCode.LeftShift) && PlayerStamina > _playerStaminaThreshold)
         {
-            
+            animator.SetBool("IsRunning", true);
             if (_rigidBody.velocity.magnitude != 0)
             {
                 _movementSpeed = _runningSpeed;               

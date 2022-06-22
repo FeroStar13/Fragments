@@ -27,6 +27,9 @@ public class Boss : EnemyBrain, IPlayerDamageable
     [SerializeField] Transform _position2;
     [SerializeField] GameObject _spikePrefab;
 
+    [Header("Win")]
+    [SerializeField] GameObject WinCanvas;
+
 
     NavMeshAgent _agent;
     Renderer _renderer;
@@ -43,7 +46,7 @@ public class Boss : EnemyBrain, IPlayerDamageable
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
-        _renderer = GetComponent<Renderer>();
+        _renderer = GetComponentInChildren<Renderer>();
         _agent.speed = _movementSpeed;
 
 
@@ -142,9 +145,20 @@ public class Boss : EnemyBrain, IPlayerDamageable
     {
         if (_hp <= 1)
         {
-          
-            Destroy(gameObject);
+            
+            StartCoroutine(Win());
+            
         }
+    }
+
+    IEnumerator Win()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+        yield return new WaitForSeconds(1); 
+        WinCanvas.SetActive(true);
+        Destroy(gameObject);
+
     }
 
     public void TakeDamage(float DamageToTake)

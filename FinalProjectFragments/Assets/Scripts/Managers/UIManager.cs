@@ -77,9 +77,7 @@ public class UIManager : MonoBehaviour
         {
            
                 Pause();
-            
-             
-            
+           
         }
 
     }
@@ -139,19 +137,18 @@ public class UIManager : MonoBehaviour
             _inventoryIsOpen = true;
             player.CanFire = false;
             _gameEsc = false;
-            Inventory.SetActive(_inventoryIsOpen);
+            Inventory.SetActive(true);
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
             return;
 
         }
-        if(Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Tab) && _inventoryIsOpen == true)
+        if(Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.Tab) && _inventoryIsOpen == true)
         {
             _inventoryIsOpen = false;
             player.CanFire = true;
-            _gameEsc = true;
-         
-            Inventory.SetActive(_inventoryIsOpen);
+            _gameEsc = true;        
+            Inventory.SetActive(false);
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = false;
             return;
