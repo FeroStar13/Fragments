@@ -5,7 +5,8 @@ using UnityEngine.AI;
 
 public class Boss : EnemyBrain, IPlayerDamageable
 {
-    [SerializeField] Transform FirePosition;
+    [SerializeField] Transform RockFirePosition;
+    [SerializeField] Transform BeamFirePosition;
 
     [Header("RockAttack")]
     [SerializeField] bool _canAttack = false;
@@ -37,6 +38,8 @@ public class Boss : EnemyBrain, IPlayerDamageable
     protected override void Update()
     {
         _fireAgainTimer += Time.deltaTime;
+       
+  
         RockThrow();
         base.Update();
         Move();
@@ -77,11 +80,12 @@ public class Boss : EnemyBrain, IPlayerDamageable
             if (Physics.Raycast(transform.position, transform.forward, out hit, _rangeToFindPlayer))
             {
                 _canAttack = true;
-
+               
                 IDamageable characterHit = hit.transform.GetComponent<IDamageable>();
                 if (characterHit != null)
                 {
                    
+                    
                     CreateRock();
                     EnergyBeam();
                     yield return new WaitForSeconds(1);
@@ -89,6 +93,7 @@ public class Boss : EnemyBrain, IPlayerDamageable
                 }
             }
             _canAttack = false;
+         
         }
     }
 
@@ -98,16 +103,20 @@ public class Boss : EnemyBrain, IPlayerDamageable
         if (_fireAgainTimer >= _fireCooldown && _canAttack == true && _changeAttack == false)
         {
             _animator.SetTrigger("Fire");
-            _AmmoutOfRockThrowed++;
-           GameObject bullet = Instantiate(_rockPrefab, FirePosition.transform.position, transform.localRotation);
-            BossFire1 fire = bullet.GetComponent<BossFire1>();
-            fire.FireMove(target.position - bullet.transform.position);
-            Destroy(bullet, 4f);
-            _fireAgainTimer = 0;
-            _canAttack = false;
+            
+                _AmmoutOfRockThrowed++;
+                GameObject bullet = Instantiate(_rockPrefab, RockFirePosition.transform.position, transform.localRotation);
+                BossFire1 fire = bullet.GetComponent<BossFire1>();
+                fire.FireMove(target.position - bullet.transform.position);
+                Destroy(bullet, 4f);
+                _fireAgainTimer = 0;
+                
+                _canAttack = false;
+            
 
         }
     }
+
 
     void EnergyBeam()
     {
@@ -125,9 +134,11 @@ public class Boss : EnemyBrain, IPlayerDamageable
 
     IEnumerator EnergyBeamLazer()
     {
+        _animator.SetTrigger("Head");
+
         for (int i = 0; i < _lazerBeamAmmount; i++)
         {
-            GameObject bullet = Instantiate(_LazerPrefab, FirePosition.transform.position, transform.localRotation);
+            GameObject bullet = Instantiate(_LazerPrefab, BeamFirePosition.transform.position, transform.localRotation);
             BossFire1 fire = bullet.GetComponent<BossFire1>();
             fire.FireMove(target.position - bullet.transform.position);
             Destroy(bullet, 4f);
